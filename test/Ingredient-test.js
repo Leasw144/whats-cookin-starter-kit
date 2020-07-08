@@ -13,14 +13,22 @@ describe('Ingredient', () => {
   });
 
   it('should have an ID', () => {
-    const ingredient = new Ingredient();
-    ingredient.id = 1;
+    const ingredient = new Ingredient(1);
     expect(ingredient.id).to.equal(1);
   })
 
   it('should be able to take any number as an ID', () => {
     const ingredient = new Ingredient(24);
     expect(ingredient.id).to.equal(24);
-  })
+  });
+
+  it('should have a name', () => {
+    const ingredient = new Ingredient(1, 'jerry rolls');
+    expect(ingredient.name).to.equal('jerry rolls');
+  });
   
+  it('should be able to have different name', () => {
+    const ingredient = new Ingredient(21, 'rumplestiltskein');
+    expect(ingredient.name).to.equal('rumplestiltskein');
+  });
 });
