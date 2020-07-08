@@ -35,11 +35,11 @@ describe('Ingredient', () => {
   it('should have an estimated cost in cents', () => {
     const ingredient = new Ingredient(34, 'rumplestiltskein', 502);
     expect(ingredient.estimatedCostInCents).to.equal(502);
-  })
+  });
 
   it('should be able to have a different cost', () => {
     const ingredient = new Ingredient(34, 'rumplestiltskein', 799);
     expect(ingredient.estimatedCostInCents).to.equal(799);
-  })
+  });
 
 });
