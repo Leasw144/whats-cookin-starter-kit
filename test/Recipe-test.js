@@ -1,6 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const Recipe = require('../src/Recipe');
+const recipeData = require('../data/recipes')
 
 describe('Recipe', () => {
   it('should be a function', () => {
@@ -32,6 +33,12 @@ describe('Recipe', () => {
     expect(recipe.image).to.equal('https://spoonacular.com/recipeImages/678353-556x370.jpg');
   });
 
+  it('should have a list of ingredients', () => {
+    const ingredients = recipeData[0].ingredients;
+    const img = 'https://spoonacular.com/recipeImages/678353-556x370.jpg';
+    const recipe = new Recipe(24, img, ingredients);
+    expect(recipe.ingredients).to.equal(recipeData[0].ingredients);
+  });
 
   
 
