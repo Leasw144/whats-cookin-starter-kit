@@ -14,13 +14,13 @@ describe('Ingredient', () => {
 
   it('should have an ID', () => {
     const ingredient = new Ingredient();
-    expect(ingredient.id).to.equal(1)
+    ingredient.id = 1;
+    expect(ingredient.id).to.equal(1);
   })
 
   it('should be able to take any number as an ID', () => {
     const ingredient = new Ingredient(24);
-    expect(ingredient.id).to.equal(24)
-
+    expect(ingredient.id).to.equal(24);
   })
   
 });
