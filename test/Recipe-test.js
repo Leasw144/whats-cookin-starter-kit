@@ -13,16 +13,16 @@ describe('Recipe', () => {
   });
 
   it('should have an ID', () => {
-    const Recipe = new Recipe(1);
-    expect(Recipe.id).to.equal(1);
+    const recipe = new Recipe(1);
+    expect(recipe.id).to.equal(1);
   })
 
-  it.skip('should be able to take any number as an ID', () => {
-    const Recipe = new Recipe(24);
-    expect(Recipe.id).to.equal(24);
+  it('should be able to take any number as an ID', () => {
+    const recipe = new Recipe(24);
+    expect(recipe.id).to.equal(24);
   });
 
-  it.skip('should have an image', () => {
+  it('should have an image', () => {
     const recipe = new Recipe(1, 'https://spoonacular.com/recipeImages/595736-556x370.jpg');
     expect(recipe.image).to.equal('https://spoonacular.com/recipeImages/595736-556x370.jpg');
   });
