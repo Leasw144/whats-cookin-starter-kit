@@ -1,7 +1,7 @@
 class Recipe {
-  constructor(id) {
-    this.id = id
-    
+  constructor(id, image) {
+    this.id = id;
+    this.image = image;
   }
 }
 

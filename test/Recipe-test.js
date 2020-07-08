@@ -27,7 +27,7 @@ describe('Recipe', () => {
     expect(recipe.image).to.equal('https://spoonacular.com/recipeImages/595736-556x370.jpg');
   });
 
-  it.skip('should be able to have a different image', () => {
+  it('should be able to have a different image', () => {
     const recipe = new Recipe(1, 'https://spoonacular.com/recipeImages/678353-556x370.jpg');
     expect(recipe.image).to.equal('https://spoonacular.com/recipeImages/678353-556x370.jpg');
   });
