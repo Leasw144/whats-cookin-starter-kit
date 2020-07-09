@@ -47,4 +47,10 @@ describe('User', () => {
 
     expect(user.name).to.equal('Boris');
   });
+
+  it('should be able to have a pantry', () => {
+    const user = new User(1, 'Boris');
+
+    expect(user.name).to.equal('Boris');
+  });
 });
