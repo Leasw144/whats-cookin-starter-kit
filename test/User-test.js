@@ -18,39 +18,50 @@ describe('User', () => {
     expect(user).to.be.an.instanceof(User);
   });
 
-  it('should have an ID', () => {
-    const user = new User(1);
-
-    expect(user.id).to.equal(1);
-  });
-
-  it('should be able to take any number as an ID', () => {
-    const user = new User(24);
-
-    expect(user.id).to.equal(24);
-  });
-
+  
   // it.skip('should have a number as an ID', () => {
-  //   const user = new User('Fred');
-
-  //   expect(user.id).to.equal();
-  // });
-
-  it('should be able to have a name', () => {
-    const user = new User(1, 'Fred');
-
-    expect(user.name).to.equal('Fred');
-  });
-
-  it('should be able to have a different name', () => {
-    const user = new User(1, 'Boris');
-
-    expect(user.name).to.equal('Boris');
-  });
+    //   const user = new User('Fred');
+    
+    //   expect(user.id).to.equal();
+    // });
+    
+    it('should be able to have a name', () => {
+      const user = new User('Fred', 1);
+      
+      expect(user.name).to.equal('Fred');
+    });
+    
+    it('should be able to have a different name', () => {
+      const user = new User('Boris', 1);
+      
+      expect(user.name).to.equal('Boris');
+    });
+    
+    it('should have an ID', () => {
+      const user = new User('Wang Peng', 1);
+  
+      expect(user.id).to.equal(1);
+    });
+  
+    it('should be able to take any number as an ID', () => {
+      const user = new User('Franco', 24);
+  
+      expect(user.id).to.equal(24);
+    });
 
   it('should be able to have a pantry', () => {
-    const user = new User(1, 'Boris');
+    const fakePantry = [{'ingredient': 1995, 'amount': 7}, {'ingredient': 19434, 'amount': 12}, {'ingredient': 1425, 'amount': 4}]
+    const user = new User('Boris', 1, fakePantry);
 
-    expect(user.name).to.equal('Boris');
+    expect(user.pantry).to.deep.equal([{ 'ingredient': 1995, 'amount': 7 }, { 'ingredient': 19434, 'amount': 12 }, { 'ingredient': 1425, 'amount': 4 }]);
   });
+
+  it('should have an empty array to store favorite recipes in by default', () => {
+    const fakePantry = [{'ingredient': 1995, 'amount': 7}, {'ingredient': 19434, 'amount': 12}, {'ingredient': 1425, 'amount': 4}]
+    const user = new User('Boris', 1, fakePantry);
+
+    expect(user.favoriteRecipes).to.deep.equal([]);
+  });
+
+
 });
