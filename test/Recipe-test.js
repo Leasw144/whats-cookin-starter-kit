@@ -1,9 +1,11 @@
+/*eslint-disable*/
 const chai = require('chai');
 const expect = chai.expect;
 const Recipe = require('../src/Recipe');
-const recipeData = require('../data/recipes')
+const recipeData = require('../data/recipes');
 
 describe('Recipe', () => {
+  
   it('should be a function', () => {
     expect(Recipe).to.be.a('function');
   });
@@ -105,8 +107,4 @@ describe('Recipe', () => {
 
     expect(recipe.tags).to.deep.equal(['decomposing', 'snack', 'light', 'vegan', 'greens', 'browns']);
   });
-
-
-  
-
 });
