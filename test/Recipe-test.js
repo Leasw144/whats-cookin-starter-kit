@@ -53,7 +53,7 @@ describe('Recipe', () => {
     const recipe = new Recipe(24, img, ingredients, instructions);
 
     expect(recipe.instructions).to.equal(recipeData[0].instructions);
-  })
+  });
 
   it('should be able to have a different list of instructions', () => {
     const instructions = recipeData[1].instructions;
@@ -62,7 +62,7 @@ describe('Recipe', () => {
     const recipe = new Recipe(24, img, ingredients, instructions);
 
     expect(recipe.instructions).to.equal(recipeData[1].instructions);
-  })
+  });
 
   it('should be able to have a name', () => {
     const name = 'overcooked hotdogs with melted plastic'
@@ -72,16 +72,39 @@ describe('Recipe', () => {
     const recipe = new Recipe(24, img, ingredients, instructions, name);
 
     expect(recipe.name).to.equal('overcooked hotdogs with melted plastic');
-  })
+  });
+
   it('should be able to have a different name', () => {
-    const name = 'just some fried socks or whatever'
+    const name = 'just some fried socks or whatever';
     const instructions = recipeData[1].instructions;
     const ingredients = recipeData[1].ingredients;
     const img = 'https://spoonacular.com/recipeImages/678353-556x370.jpg';
     const recipe = new Recipe(24, img, ingredients, instructions, name);
 
     expect(recipe.name).to.equal('just some fried socks or whatever');
-  })
+  });
+
+  it('should be able to have a list of tags', () => {
+    const name = 'just some fried socks or whatever';
+    const tags = ['crusty', 'second breakfast', 'light'];
+    const instructions = recipeData[1].instructions;
+    const ingredients = recipeData[1].ingredients;
+    const img = 'https://spoonacular.com/recipeImages/678353-556x370.jpg';
+    const recipe = new Recipe(24, img, ingredients, instructions, name, tags);
+
+    expect(recipe.tags).to.deep.equal(['crusty', 'second breakfast', 'light']);
+  });
+
+  it('should be able to have a list of different tags', () => {
+    const name = 'week-old grass clippings';
+    const tags = ['decomposing', 'snack', 'light', 'vegan', 'greens', 'browns'];
+    const instructions = recipeData[1].instructions;
+    const ingredients = recipeData[1].ingredients;
+    const img = 'https://spoonacular.com/recipeImages/678353-556x370.jpg';
+    const recipe = new Recipe(24, img, ingredients, instructions, name, tags);
+
+    expect(recipe.tags).to.deep.equal(['decomposing', 'snack', 'light', 'vegan', 'greens', 'browns']);
+  });
 
 
   
