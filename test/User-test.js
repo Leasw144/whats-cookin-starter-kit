@@ -4,7 +4,7 @@ const expect = chai.expect;
 const Recipe = require('../src/Recipe');
 const User = require('../src/User')
 const recipeData = require('../data/recipes');
-const userData = require('../data/user');
+const userData = require('../data/users');
 
 describe('User', () => {
 
@@ -22,10 +22,11 @@ describe('User', () => {
     const user = new User(1);
 
     expect(user.id).to.equal(1);
-  })
+  });
 
   it('should be able to take any number as an ID', () => {
     const user = new User(24);
 
     expect(user.id).to.equal(24);
   });
+});
