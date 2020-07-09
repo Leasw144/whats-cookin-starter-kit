@@ -16,8 +16,8 @@ nav {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  /* background: #F26419; */
-  background-image: linear-gradient(to bottom, #F26419, #F5A22A );
+  background: #F26419;
+  /* background-image: linear-gradient(to bottom, #F26419, #F5A22A ); */
   height: 100%;
   width: 17%;
   box-shadow: 3px 3px 10px grey;
@@ -29,7 +29,11 @@ nav {
 }
 
 img {
+  object-fit: cover;
+  border-radius: 50%;
   height: 9em;
+  width: 9em;
+  margin-top: 2em;
 }
 
 h2 {
@@ -63,8 +67,8 @@ main {
 
 header {
   display: flex;
-  /* background: #F5A22A; */
-  background-image: linear-gradient(to right, #F26419, #F5A22A );
+  background: #F5A22A;
+  /* background-image: linear-gradient(to right, #F26419, #F5A22A ); */
   width: 85vw;
   box-shadow: 6px 3px 10px grey;
 }
