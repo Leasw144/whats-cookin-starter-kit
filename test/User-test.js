@@ -57,11 +57,14 @@ describe('User', () => {
   });
 
   it('should have an empty array to store favorite recipes in by default', () => {
-    const fakePantry = [{'ingredient': 1995, 'amount': 7}, {'ingredient': 19434, 'amount': 12}, {'ingredient': 1425, 'amount': 4}]
-    const user = new User('Boris', 1, fakePantry);
+    const user = new User();
 
     expect(user.favoriteRecipes).to.deep.equal([]);
   });
 
+  it('should have an empty array to store recipes to cook by default', () => {
+    const user = new User();
 
+    expect(user.recipesToCook).to.deep.equal([]);
+  });
 });
