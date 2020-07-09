@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Whats Cookin</title>
+    <meta charset='UTF-8'>
+    <title>What's Cookin?</title>
+    <link rel='stylesheet' href='./styles.css'>
   </head>
   <body>
-    <h1>Whats Cookin</h1>
+    <nav>
+      <div class='navigation'>
+        <img class='icon' src='https://media.giphy.com/media/ZCBUgJM2w8lZ6ChGEs/giphy.gif' alt='a gif of a rotating cinnamon roll'>
+        <h2>Navigation</h2>
+        <div class='nav-buttons'>
+          <button>Switch User</button>
+          <button>View Favorite Recipes</button>
+          <button>View Menu</button>
+          <button>View Your Pantry</button>
+          <button>View Grocery List</button>
+        </div>
+      </div>
+      <form class='search-and-filter' action=''>
+        <div class='search-bar'>
+          <label for=''></label>
+          <input class='input' type='search' placeholder='enter name/ingredient'>
+          <button class='search-button'>Search</button>
+        </div>
+        <div class='filter'>Filter By Type</div>
+      </form>
+    </nav>
+    <main>
+      <header>
+        <h1>What's Cookin, Nelda?</h1>
+      </header>
+    </main>
 
-    <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="../data/recipes.js"></script>
-    <script type="text/javascript" src="../data/ingredients.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
+    <script type='text/javascript' src='../data/users.js'></script>
+    <script type='text/javascript' src='../data/recipes.js'></script>
+    <script type='text/javascript' src='../data/ingredients.js'></script>
+    <script type='text/javascript' src='./scripts.js'></script>
   </body>
 </html>
-
-// pushing this to github
