@@ -63,6 +63,27 @@ describe('Recipe', () => {
 
     expect(recipe.instructions).to.equal(recipeData[1].instructions);
   })
+
+  it('should be able to have a name', () => {
+    const name = 'overcooked hotdogs with melted plastic'
+    const instructions = recipeData[1].instructions;
+    const ingredients = recipeData[1].ingredients;
+    const img = 'https://spoonacular.com/recipeImages/678353-556x370.jpg';
+    const recipe = new Recipe(24, img, ingredients, instructions, name);
+
+    expect(recipe.name).to.equal('overcooked hotdogs with melted plastic');
+  })
+  it('should be able to have a different name', () => {
+    const name = 'just some fried socks or whatever'
+    const instructions = recipeData[1].instructions;
+    const ingredients = recipeData[1].ingredients;
+    const img = 'https://spoonacular.com/recipeImages/678353-556x370.jpg';
+    const recipe = new Recipe(24, img, ingredients, instructions, name);
+
+    expect(recipe.name).to.equal('just some fried socks or whatever');
+  })
+
+
   
 
 });
