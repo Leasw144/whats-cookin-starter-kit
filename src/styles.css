@@ -19,6 +19,7 @@ nav {
   background: #F26419;
   height: 100%;
   width: 17%;
+  box-shadow: 3px 3px 10px grey;
 }
 
 .navigation {
@@ -63,6 +64,7 @@ header {
   display: flex;
   background: #F5A22A;
   width: 85vw;
+  box-shadow: 3px 3px 10px grey;
 }
 
 h1 {
