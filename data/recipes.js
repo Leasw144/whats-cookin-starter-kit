@@ -1,3 +1,4 @@
+/*eslint-disable*/
 const recipeData = [
   {
     "id": 595736,
@@ -5381,3 +5382,7 @@ const recipeData = [
     ]
   }
 ];
+
+if (typeof module !== 'undefined') {
+  module.exports = recipeData;
+}
