@@ -29,4 +29,22 @@ describe('User', () => {
 
     expect(user.id).to.equal(24);
   });
+
+  // it.skip('should have a number as an ID', () => {
+  //   const user = new User('Fred');
+
+  //   expect(user.id).to.equal();
+  // });
+
+  it('should be able to have a name', () => {
+    const user = new User(1, 'Fred');
+
+    expect(user.name).to.equal('Fred');
+  });
+
+  it('should be able to have a different name', () => {
+    const user = new User(1, 'Boris');
+
+    expect(user.name).to.equal('Boris');
+  });
 });
