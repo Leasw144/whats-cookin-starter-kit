@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 const recipeData = [
   {
     "id": 595736,
