@@ -52,8 +52,8 @@ h2 {
 
 button {
   border: none;
-  border-radius: .5em;
-  height: 1.5em;
+  border-radius:  1.5em ;
+  height: 1.7em;
 }
 
 .search-and-filter {
@@ -67,7 +67,7 @@ button {
 .search-bar {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  align-items: center;
 }
 
 .filter{
