@@ -3,6 +3,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const Recipe = require('../src/Recipe');
 const User = require('../src/User')
+const Menu = require('../src/Menu');
 const recipeData = require('../data/recipes');
 const userData = require('../data/users');
 
@@ -98,6 +99,6 @@ describe('User', () => {
   it('should have an empty array to store recipes to cook by default', () => {
     const user = new User();
 
-    expect(user.menu).to.deep.equal([]);
+    expect(user.menu).to.deep.equal(new Menu());
   });
 });
