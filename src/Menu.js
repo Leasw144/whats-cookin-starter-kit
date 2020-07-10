@@ -1,14 +1,9 @@
 class Menu {
   constructor() {
-    
+    this.recipesToCook = [];
   }
 }
 
-
-
-
-
-
-if (typeof Module !== 'undefined') {
+if (typeof module !== 'undefined') {
   module.exports = Menu;
 }
