@@ -1,10 +1,12 @@
+const Menu = require("./Menu");
+
 class User {
   constructor(name, id, pantry) {
     this.name = name || 'Guest';
     this.id = id || 0;
     this.pantry = pantry || [];
     this.favoriteRecipes = [];
-    this.menu = [];
+    this.menu = new Menu();
   }
 
   toggleFavorite(recipe) {
