@@ -3,6 +3,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const Recipe = require('../src/Recipe');
 const User = require('../src/User')
+const Menu = require('../src/Menu');
 const recipeData = require('../data/recipes');
 const userData = require('../data/users');
 
@@ -58,13 +59,46 @@ describe('User', () => {
 
   it('should have an empty array to store favorite recipes in by default', () => {
     const user = new User();
-
+    
     expect(user.favoriteRecipes).to.deep.equal([]);
+  });
+  
+  it('should be able to add recipes to their favorite recipes', () => {
+    const recipe = new Recipe(recipeData[0].id, recipeData[0].image, recipeData[0].ingredients, recipeData[0].instructions, recipeData[0].name, recipeData[0].tags);
+    const user = new User();
+
+    user.toggleFavorite(recipe);
+
+    expect(user.favoriteRecipes[0]).to.equal(recipe);
+  });
+  
+  it('should remove the recipe if it is already a favorite', () => {
+    const recipe = new Recipe(recipeData[0].id, recipeData[0].image, recipeData[0].ingredients, recipeData[0].instructions, recipeData[0].name, recipeData[0].tags);
+    const recipe2 = new Recipe(recipeData[1].id, recipeData[1].image, recipeData[1].ingredients, recipeData[1].instructions, recipeData[1].name, recipeData[1].tags);
+    const user = new User();
+    
+    user.toggleFavorite(recipe);
+    user.toggleFavorite(recipe2);
+
+    expect(user.favoriteRecipes.length).to.equal(2);
+    
+    user.toggleFavorite(recipe);
+    
+    expect(user.favoriteRecipes.length).to.equal(1);
+    expect(user.favoriteRecipes[0]).to.equal(recipe2);
+    
+    user.toggleFavorite(recipe);
+    
+    expect(user.favoriteRecipes[1]).to.equal(recipe);
+    
+    user.toggleFavorite(recipe);
+
+    expect(user.favoriteRecipes[1]).to.equal(undefined);
   });
 
   it('should have an empty array to store recipes to cook by default', () => {
     const user = new User();
 
-    expect(user.recipesToCook).to.deep.equal([]);
+    expect(user.menu).to.deep.equal(new Menu());
   });
 });
