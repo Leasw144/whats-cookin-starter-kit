@@ -1,8 +1,7 @@
 class Pantry {
-  constructor() {
-    this.ingredients = [];
+  constructor(pantry) {
+    this.ingredients = [...pantry];
   }
-
   
 }
 
