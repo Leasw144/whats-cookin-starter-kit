@@ -39,6 +39,8 @@ describe('Pantry', () => {
     expect(result).to.equal(recipe);
   });
   
+  // should be able to check against properties between two objects
+  // 
 
 
   
