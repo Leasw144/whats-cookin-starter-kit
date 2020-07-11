@@ -3,6 +3,9 @@ class Pantry {
     this.ingredients = [];
   }
 
+  checkPantry(menu) {
+    return menu;
+  }
   
 }
 
