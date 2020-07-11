@@ -19,7 +19,6 @@ describe('User', () => {
     expect(user).to.be.an.instanceof(User);
   });
 
-  
   // it.skip('should have a number as an ID', () => {
     //   const user = new User('Fred');
     
@@ -96,9 +95,15 @@ describe('User', () => {
     expect(user.favoriteRecipes[1]).to.equal(undefined);
   });
 
-  it('should have an empty array to store recipes to cook by default', () => {
-    const user = new User();
+  it('should be able to filter a recipe by tag'), () => {
+    const allRecipes = [];
+    const favRecipes = [];
 
-    expect(user.menu).to.deep.equal(new Menu());
+    
   });
+  // it('should have an empty array to store recipes to cook by default', () => {
+  //   const user = new User();
+
+  //   expect(user.menu).to.deep.equal(new Menu());
+  // });
 });
