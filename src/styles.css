@@ -24,6 +24,7 @@ nav {
   height: 100%;
   width: 17%;
   box-shadow: 3px 3px 10px grey;
+  /* position: fixed; */
 }
 
 .navigation {
@@ -31,7 +32,7 @@ nav {
   flex-direction: column;
 }
 
-img {
+.nav-icon {
   object-fit: cover;
   border-radius: 50%;
   height: 9em;
@@ -114,4 +115,38 @@ header {
 h1 {
   margin-left: auto;
   margin-right: auto;
+}
+
+.recipe-card {
+  border: none;
+  border-radius: 1em;
+  background: linear-gradient(to right, #F26419, #F5A22A );
+  display: inline-block;
+  /* width: 176px;
+  height: 292px; */
+  padding: 1em;
+  margin: 1em;
+  box-shadow: 3px 3px 10px grey;
+
+}
+
+.recipe-img {
+  object-fit: cover;
+  border-radius: 50%;
+  height: 9em;
+  width: 9em;
+  box-shadow: 3px 3px 10px purple;
+}
+
+/* .card-footer {
+  background: #f5f5f5;
+  border-radius: .5em .5em 1em 1em;
+} */
+
+p {
+  text-align: center;
+  color: #f5f5f5;
+  font-weight: bolder;
+  font-size: 1.2em;
+  max-width: fit-content;
 }
