@@ -121,7 +121,7 @@ h1 {
   margin-right: auto;
 }
 
-.recipes-display {
+.all-recipes-display {
   margin-top: 82.88px;
   display: flex;
   flex-wrap: wrap;
@@ -180,11 +180,11 @@ p {
   align-self: flex-end;
 }
 
-.recipe-details {
+.recipe-details-display {
   width: 86%;
 }
 
-.recipe-details-display {
+.recipe-details {
   margin: 1em;
   border-radius: 1em;
   margin-top: 100px;
@@ -197,6 +197,8 @@ p {
 .recipe-img-full {
   object-fit: cover;
   border-radius: 1em;
+  width: 556px;
+  height: 370px;
   box-shadow: 3px 3px 10px purple;
 }
 
