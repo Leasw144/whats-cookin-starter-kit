@@ -1,8 +1,5 @@
 /*eslint-disable*/
 
-// const Recipe = require("./Recipe");
-// const recipeData = require("../data/recipes");
-
 const allRecipesDisplay = document.querySelector('.all-recipes-display');
 const allRecipes = recipeData.map(recipe => {
   return new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
@@ -16,7 +13,7 @@ document.addEventListener('click', clickWhat);
 function clickWhat(event) {
   if (event.target.innerText.includes('Details')) {
     displayRecipeDetails(event.target.parentNode.id);
-  } else if (event.target.innerText.includes('Back to Recipes') || event.target.innerText.includes('View All Recipes')){
+  } else if (event.target.innerText === 'Back to Recipes' || event.target.innerText=== 'View All Recipes'){
     displayAllRecipes();
   }
 }
@@ -38,30 +35,44 @@ function displayAllRecipes() {
 }
 
 function displayRecipeDetails(id) {
-  const recipeDetailsDisplay = document.querySelector('.recipe-details-display');
-  const recipe = makeNewRecipe(id)
+  // const recipeDetailsDisplay = document.querySelector('.recipe-details-display');
+  const image = document.querySelector('.recipe-img-full');
+  const name = document.querySelector('.name');
+  const ingredients = document.querySelector('.ingredients');
+  const cost = document.querySelector('.cost');
+  const instructions = document.querySelector('.instructions');
+  const recipe = makeNewRecipe(id);
   hideElement('all-recipes-display');
   displayElement('recipe-details-display');
-  recipeDetailsDisplay.innerHTML = `
-    <div class='recipe-details'>
-      <div class='image-buttons-tags'>
-        <img class='recipe-img-full' src='${recipe.image}' alt='picture of ${recipe.name}' />
-        <footer class='recipe-footer'>
-          <div class='recipe-buttons'>
-            <button><img src="" alt="">♡ Favorite</button>
-            <button><img src="" alt="">Add to Menu</button>
-            <button><img src="" alt="">Back to Recipes</button>
-          </div>
-        </footer>
-      </div>
-      <div class='name-ingredients-instructions'>
-        <p class='name'>${recipe.name}</p>
-        <p class='ingredients'>${recipe.getIngredients()}</p>
-        <p>--- Total Cost of Ingredients: $${recipe.getCost()}</p>
-        <p class='instructions'>${recipe.getDirections()}</p>
-      </div>
-    </div>
-  `;
+  image.src = recipe.image;
+  image.alt = `picture of ${recipe.name}`;
+  name.innerText = recipe.name;
+  ingredients.innerHTML = recipe.getIngredients();
+  cost.innerHTML = `<b> Total Cost of Ingredients: $${recipe.getCost()}</b>`;
+  instructions.innerHTML = recipe.getDirections();
+
+
+  // recipeDetailsDisplay.innerHTML = `
+  //   <div class='recipe-details'>
+  //     <div class='image-buttons-tags'>
+  //       <img class='recipe-img-full' src='${recipe.image}' alt='picture of ${recipe.name}' />
+  //       <footer class='recipe-footer'>
+  //         <div class='recipe-buttons'>
+  //           <button><img src="" alt="">♡ Favorite</button>
+  //           <button><img src="" alt="">Add to Menu</button>
+  //           <button><img src="" alt="">Back to Recipes</button>
+  //         </div>
+  //       </footer>
+  //     </div>
+  //     <div class='name-ingredients-instructions'>
+  //       <p class='name'>${recipe.name}</p>
+  //       <p class='ingredients'>${recipe.getIngredients()}</p>
+  //       <p class='cost'><b> Total Cost of Ingredients: $${recipe.getCost()}</b></p>
+  //       <h3>Directions</h3>
+  //       <p class='instructions'>${recipe.getDirections()}</p>
+  //     </div>
+  //   </div>
+  // `;
 
 
 
