@@ -4,7 +4,7 @@ const expect = chai.expect;
 const Recipe = require('../src/Recipe');
 const recipeData = require('../data/recipes');
 
-describe('Recipe', () => {
+describe.only('Recipe', () => {
   
   it('should be a function', () => {
     expect(Recipe).to.be.a('function');
@@ -106,5 +106,18 @@ describe('Recipe', () => {
     const recipe = new Recipe(24, img, ingredients, instructions, name, tags);
 
     expect(recipe.tags).to.deep.equal(['decomposing', 'snack', 'light', 'vegan', 'greens', 'browns']);
+  });
+
+  it('should be able to get the total cost of all the ingredients in the recipe', () => {
+    const name = "week-old grass clippings";
+    const tags = ["decomposing", "snack", "light", "vegan", "greens", "browns"];
+    const instructions = recipeData[1].instructions;
+    const ingredients = [{id: 20081, quantity: {amount: 1.5, unit: 'c'}}, {id: 18372, quantity: {amount: 0.5, unit: 'tsp'}}];
+    const img = "https://spoonacular.com/recipeImages/678353-556x370.jpg";
+    const recipe = new Recipe(24, img, ingredients, instructions, name, tags);
+
+    const totalCost = recipe.getCost();
+
+    expect(totalCost).to.equal(5.04);
   });
 });
