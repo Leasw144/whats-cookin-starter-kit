@@ -1,20 +1,23 @@
 /*eslint-disable*/
 
 const recipesDisplay = document.querySelector('.recipes-display');
-const header = document.querySelector('h1');
 const allRecipes = recipeData.map(recipe => {
   return new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
 });
-const currentUser = new User(usersData[randomIndex].name, usersData[randomIndex].id, usersData[randomIndex].pantry);
 const randomIndex = Math.floor(Math.random() * usersData.length);
+const currentUser = new User(usersData[randomIndex].name, usersData[randomIndex].id, usersData[randomIndex].pantry);
 
 
-window.addEventListener('load', loadRecipes);
+window.addEventListener('load', loadData);
 
-
+function loadData() {
+  loadUserName();
+  loadRecipes();
+}
 
 function loadUserName() {
-  let name = currentUser.name.split(' ');
+  const header = document.querySelector('h1');
+  const name = currentUser.name.split(' ');
   header.innerText = `What's Cookin, ${name[0]}?`;
 }
 
