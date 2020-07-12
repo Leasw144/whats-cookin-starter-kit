@@ -14,19 +14,18 @@ class Recipe {
     const total = this.ingredients.reduce((totalCost, recipeIngredient) => {
       ingredientsData.forEach(ingredient => {
         if (ingredient.id === recipeIngredient.id) {
-          totalCost += recipeIngredient.quantity.amount * ingredient.estimatedCostInCents;
+          // totalCost += recipeIngredient.quantity.amount * ingredient.estimatedCostInCents;
+          totalCost += ingredient.estimatedCostInCents;
         }
       });
       return totalCost;
     }, 0);
-    return total / 100;
+    return (total / 100).toFixed(2);
   }
 
   getDirections() {
     const directions = this.instructions.reduce((final, step) => {
-      return final += `Step ${step.number}: ${step.instruction}
-
-`
+      return final += `<b>Step ${step.number}:</b> ${step.instruction}<br><br>`;
     }, '');
     return directions
   }
@@ -39,9 +38,7 @@ class Recipe {
           name = ingredient.name;
         }
       });
-      masterList += `• ${recipeIngredient.quantity.amount} ${recipeIngredient.quantity.unit} of ${name}
-
-`;
+      masterList += `• ${recipeIngredient.quantity.amount} ${recipeIngredient.quantity.unit} ${name}<br>`;
       return masterList;
     }, '');
     return ingredientList;
