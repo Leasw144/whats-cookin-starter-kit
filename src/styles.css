@@ -22,9 +22,9 @@ nav {
   background: #F26419;
   /* background-image: linear-gradient(to bottom, #F26419, #F5A22A ); */
   height: 100%;
-  width: 17%;
+  min-width: 217px;
   box-shadow: 3px 3px 10px grey;
-  /* position: fixed; */
+  position: fixed;
 }
 
 .navigation {
@@ -102,14 +102,17 @@ button {
 main {
   display: flex;
   flex-direction: column;
+  /* position: absolute; */
+  margin-left: 217px;
 }
 
 header {
   display: flex;
   background: #F5A22A;
   /* background-image: linear-gradient(to right, #F26419, #F5A22A ); */
-  width: 85vw;
+  width: auto;
   box-shadow: 6px 3px 10px grey;
+  position: relative;
 }
 
 h1 {
@@ -117,13 +120,20 @@ h1 {
   margin-right: auto;
 }
 
+.recipes-display {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .recipe-card {
   border: none;
   border-radius: 1em;
   background: linear-gradient(to right, #F26419, #F5A22A );
-  display: inline-block;
-  /* width: 176px;
-  height: 292px; */
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  min-width: 180px;
+  /*height: 292px;*/
   padding: 1em;
   margin: 1em;
   box-shadow: 3px 3px 10px grey;
@@ -136,6 +146,7 @@ h1 {
   height: 9em;
   width: 9em;
   box-shadow: 3px 3px 10px purple;
+  align-self: center;
 }
 
 /* .card-footer {
@@ -149,4 +160,14 @@ p {
   font-weight: bolder;
   font-size: 1.2em;
   max-width: fit-content;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: flex-end;
+  /* position: absolute; */
+}
+
+.card-buttons button {
+  margin-left: 10px;
 }
