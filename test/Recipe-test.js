@@ -4,7 +4,7 @@ const expect = chai.expect;
 const Recipe = require('../src/Recipe');
 const recipeData = require('../data/recipes');
 
-describe('Recipe', () => {
+describe.only('Recipe', () => {
   
   it('should be a function', () => {
     expect(Recipe).to.be.a('function');
