@@ -21,6 +21,16 @@ class Recipe {
     }, 0);
     return total / 100;
   }
+
+  getDirections() {
+    const directions = this.instructions.reduce((final, step) => {
+      return final += `Step ${step.number}: ${step.instruction}
+
+`
+    }, '');
+    console.log(directions)
+    return directions
+  }
 }
 
 if (typeof module !== 'undefined') {
