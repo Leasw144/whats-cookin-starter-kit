@@ -17,7 +17,7 @@ class User {
     } else {
       favs.push(recipe);
     }
-  };
+  }
 
   filterByType(collection, tag) {
     return collection.filter((recipe) => {
@@ -25,7 +25,6 @@ class User {
     });
   }
 }
-
 
 if (typeof module !== 'undefined') {
   module.exports = User;
