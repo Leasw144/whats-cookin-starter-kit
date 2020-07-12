@@ -4,7 +4,7 @@ const expect = chai.expect;
 const Recipe = require('../src/Recipe');
 const recipeData = require('../data/recipes');
 
-describe.only('Recipe', () => {
+describe('Recipe', () => {
   
   it('should be a function', () => {
     expect(Recipe).to.be.a('function');
@@ -119,5 +119,41 @@ describe.only('Recipe', () => {
     const totalCost = recipe.getCost();
 
     expect(totalCost).to.equal(5.04);
+  });
+
+  it('should have a method that gets directions', () => {
+    const name = 'Santiago\'s Nachos or whatever'
+    const ingredients = ['Your sheer will']
+    const tags = ['nothing']
+    const img = 'nothing to see here'
+    const instructions = [
+      {
+        'instruction': 'Just do whatever you want', 'number': 1
+      },
+      {
+        'instruction': 'It\'s a free country.',
+        'number': 2
+      }]
+    const nachos = new Recipe(24, img, ingredients, instructions, name, tags);
+
+    expect(nachos.getDirections).to.be.a('function');
+  });
+
+  it.only('should have a method that returns an interpolated string of the directions', () => {
+    const name = 'Santiago\'s Nachos or whatever'
+    const ingredients = ['Your sheer will']
+    const tags = ['nothing']
+    const img = 'nothing to see here'
+    const instructions = [
+      {
+        'instruction': 'Just do whatever you want', 'number': 1
+      },
+      {
+        'instruction': 'It\'s a free country.',
+        'number': 2
+      }]
+    const nachos = new Recipe(24, img, ingredients, instructions, name, tags);
+
+    expect(nachos.getDirections()).to.equal('Step 1: Just do whatever you want\n\nStep 2: It\'s a free country.\n\n');
   });
 });
