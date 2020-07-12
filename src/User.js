@@ -1,4 +1,4 @@
-const Menu = require("./Menu");
+// const Menu = require("./Menu");
 
 class User {
   constructor(name, id, pantry) {

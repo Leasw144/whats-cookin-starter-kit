@@ -149,10 +149,13 @@ h1 {
   align-self: center;
 }
 
-/* .card-footer {
-  background: #f5f5f5;
+.card-footer {
+  /* background: #f5f5f5;
   border-radius: .5em .5em 1em 1em;
-} */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap; */
+}
 
 p {
   text-align: center;
@@ -163,6 +166,7 @@ p {
 }
 
 .card-buttons {
+  align-self: flex-end;
   display: flex;
   justify-content: flex-end;
   /* position: absolute; */
@@ -170,4 +174,5 @@ p {
 
 .card-buttons button {
   margin-left: 10px;
+  align-self: flex-end;
 }

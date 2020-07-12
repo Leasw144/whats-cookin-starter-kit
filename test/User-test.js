@@ -95,7 +95,7 @@ describe('User', () => {
     expect(user.favoriteRecipes[1]).to.equal(undefined);
   });
 
-  it('should be able to filter a recipe by tag'), () => {
+  it('should be able to filter a recipe by tag', () => {
     const allRecipes = [];
     const favRecipes = [];
 
