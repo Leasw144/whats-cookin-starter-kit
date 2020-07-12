@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 const recipesDisplay = document.querySelector('.recipes-display');
 const allRecipes = recipeData.map(recipe => {
   return new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
@@ -10,7 +12,7 @@ function loadRecipes() {
   recipesDisplay.innerHTML = '';
   allRecipes.forEach(recipe => {
     recipesDisplay.innerHTML += `
-      <div class='recipe-card'>
+      <div id ='${recipe.id}' class='recipe-card'>
         <img class='recipe-img' src=${recipe.image} alt='picture of ${recipe.name}'/>
         <footer class='card-footer'>
           <p>${recipe.name}</p>
