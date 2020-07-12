@@ -8,6 +8,10 @@ class Menu {
       this.recipesToCook.push(recipe);
     }
   }
+
+  clearMenu() {
+    this.recipesToCook = [];
+  }
 }
 
 if (typeof module !== 'undefined') {
