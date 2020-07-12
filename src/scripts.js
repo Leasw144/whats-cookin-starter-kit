@@ -4,7 +4,9 @@ const recipesDisplay = document.querySelector('.recipes-display');
 const allRecipes = recipeData.map(recipe => {
   return new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
 });
-const currentUser = new User(usersData[0].name, usersData[0].id, usersData[0].pantry);
+const currentUser = new User(usersData[randomIndex].name, usersData[randomIndex].id, usersData[randomIndex].pantry);
+const randomIndex = Math.floor(Math.random() * usersData.length);
+
 
 window.addEventListener('load', loadRecipes);
 
