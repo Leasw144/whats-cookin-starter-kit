@@ -1,3 +1,33 @@
+# What's Cookin
+
+#### What's Cookin is an application that allows users to browse through a list of recipes, and interact with those recipes in a variety of ways. Users of this application can:
+
+* See the details of each recipe, including the names and amounts of ingredients and specific instructions.
+* Get the total cost of the ingredients required for each recipe.
+* Save recipes to a collection of favorites.
+* Search and filter recipes by name, ingredient, or type. 
+* Check to see if they have enough ingredients in their pantry to cook a recipe. 
+* Add recipes to their Menu of upcoming meals.
+* Get a grocery list of ingredients needed to cook what is on their menu and the total cost. 
+
+#### This was a Mod 2 project in Turing School of Software and Design's Front End Engineering program during the 2006 inning. The project was designed to help students better understand how to:
+
+* Follow a specification to make a working application.
+* Implement ES6 classes that communicate to each other as needed.
+* Write modular, reusable code that follows SRP (Single Responsibility Principle).
+* Implement a robust testing suite using TDD.
+* Use object and array prototype methods to perform data manipulation.
+* Display information on the page while maintaining ability to test class properties and mehtods.
+* Create a user interface that is easy to use and displays information in a clear way.
+
+
+
+
+---------------------------------------------------------------------
+
+
+
+
 # What's Cookin'? Starter Kit 
 
 The details of this project are outlined in the <a href="https://frontend.turing.io/projects/whats-cookin.html" target="\__blank">project spec</a>.
