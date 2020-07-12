@@ -19,36 +19,35 @@ describe('User', () => {
     expect(user).to.be.an.instanceof(User);
   });
 
-  
   // it.skip('should have a number as an ID', () => {
     //   const user = new User('Fred');
     
     //   expect(user.id).to.equal();
     // });
     
-    it('should be able to have a name', () => {
-      const user = new User('Fred', 1);
-      
-      expect(user.name).to.equal('Fred');
-    });
+  it('should be able to have a name', () => {
+    const user = new User('Fred', 1);
     
-    it('should be able to have a different name', () => {
-      const user = new User('Boris', 1);
-      
-      expect(user.name).to.equal('Boris');
-    });
+    expect(user.name).to.equal('Fred');
+  });
+  
+  it('should be able to have a different name', () => {
+    const user = new User('Boris', 1);
     
-    it('should have an ID', () => {
-      const user = new User('Wang Peng', 1);
+    expect(user.name).to.equal('Boris');
+  });
   
-      expect(user.id).to.equal(1);
-    });
-  
-    it('should be able to take any number as an ID', () => {
-      const user = new User('Franco', 24);
-  
-      expect(user.id).to.equal(24);
-    });
+  it('should have an ID', () => {
+    const user = new User('Wang Peng', 1);
+
+    expect(user.id).to.equal(1);
+  });
+
+  it('should be able to take any number as an ID', () => {
+    const user = new User('Franco', 24);
+
+    expect(user.id).to.equal(24);
+  });
 
   it('should be able to have a pantry', () => {
     const fakePantry = [{'ingredient': 1995, 'amount': 7}, {'ingredient': 19434, 'amount': 12}, {'ingredient': 1425, 'amount': 4}]
@@ -96,9 +95,15 @@ describe('User', () => {
     expect(user.favoriteRecipes[1]).to.equal(undefined);
   });
 
-  it('should have an empty array to store recipes to cook by default', () => {
-    const user = new User();
+  it('should be able to filter a recipe by tag'), () => {
+    const allRecipes = [];
+    const favRecipes = [];
 
-    expect(user.menu).to.deep.equal(new Menu());
+
   });
+  // it('should have an empty array to store recipes to cook by default', () => {
+  //   const user = new User();
+
+  //   expect(user.menu).to.deep.equal(new Menu());
+  // });
 });

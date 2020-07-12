@@ -1,12 +1,12 @@
 class Pantry {
-  constructor() {
-    this.ingredients = [];
+  constructor(pantry) {
+    this.ingredients = [...pantry];
   }
 
   checkPantry(menu) {
     return menu;
   }
-  
+
 }
 
 if (typeof module !== 'undefined') {
