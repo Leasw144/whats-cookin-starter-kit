@@ -30,7 +30,6 @@ class Recipe {
 
 `
     }, '');
-    console.log(directions)
     return directions
   }
 
@@ -50,8 +49,10 @@ class Recipe {
     return ingredientList;
   }
 
-  getRecipeDetails()
-
+  getRecipeDetails() {
+    console.log(this.getIngredients() + this.getDirections());
+    return this.getIngredients() + this.getDirections();
+  }
 }
 
 if (typeof module !== 'undefined') {
