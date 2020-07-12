@@ -1,5 +1,7 @@
 // const ingredientsData = require('../data/ingredients');
 
+const ingredientsData = require("../data/ingredients");
+
 class Recipe {
   constructor(id, image, ingredients, instructions, name, tags) {
     this.id = id;
@@ -31,6 +33,25 @@ class Recipe {
     console.log(directions)
     return directions
   }
+
+  getIngredients() {
+    const ingredientList = this.ingredients.reduce((masterList, recipeIngredient) => {
+      let name = '';
+      ingredientsData.forEach(ingredient => {
+        if(ingredient.id === recipeIngredient.id) {
+          name = ingredient.name;
+        }
+      });
+      masterList += `• ${recipeIngredient.quantity.amount} ${recipeIngredient.quantity.unit} of ${name}
+
+`;
+      return masterList;
+    }, '');
+    return ingredientList;
+  }
+
+  getRecipeDetails()
+
 }
 
 if (typeof module !== 'undefined') {
