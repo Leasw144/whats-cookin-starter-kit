@@ -1,6 +1,7 @@
 /*eslint-disable*/
 
 const recipesDisplay = document.querySelector('.recipes-display');
+const header = document.querySelector('h1');
 const allRecipes = recipeData.map(recipe => {
   return new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
 });
@@ -9,6 +10,13 @@ const randomIndex = Math.floor(Math.random() * usersData.length);
 
 
 window.addEventListener('load', loadRecipes);
+
+
+
+function loadUserName() {
+  let name = currentUser.name.split(' ');
+  header.innerText = `What's Cookin, ${name[0]}?`;
+}
 
 function loadRecipes() {
   recipesDisplay.innerHTML = '';
