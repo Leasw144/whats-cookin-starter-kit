@@ -7,8 +7,8 @@ const allRecipes = recipeData.map(recipe => {
 const randomIndex = Math.floor(Math.random() * usersData.length);
 const currentUser = new User(usersData[randomIndex].name, usersData[randomIndex].id, usersData[randomIndex].pantry);
 
-
 window.addEventListener('load', loadData);
+document.addEventListener('click', clickWhat);
 
 function loadData() {
   loadUserName();
@@ -31,8 +31,8 @@ function loadRecipes() {
           <p>${recipe.name}</p>
           <div class='card-buttons'>
             <button><img src="" alt="">♡</button>
-            <button><img src="" alt="">Menu</button>
-            <button><img src="" alt="">$$$</button>
+            <button><img src="" alt="">Details</button>
+            <button><img src="" alt="">+Menu</button>
           </div>
         </footer>
       </div>
