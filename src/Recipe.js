@@ -35,7 +35,7 @@ class Recipe {
     const ingredientList = this.ingredients.reduce((masterList, recipeIngredient) => {
       let name = '';
       ingredientsData.forEach(ingredient => {
-        if(ingredient.id === recipeIngredient.id) {
+        if (ingredient.id === recipeIngredient.id) {
           name = ingredient.name;
         }
       });
@@ -48,7 +48,6 @@ class Recipe {
   }
 
   getRecipeDetails() {
-    console.log(this.getIngredients() + this.getDirections());
     return this.getIngredients() + this.getDirections();
   }
 }
