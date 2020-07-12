@@ -170,7 +170,7 @@ describe('Recipe', () => {
     expect(listOfIngredients).to.equal('• 1.5 c of wheat flour\n\n• 0.5 tsp of bicarbonate of soda\n\n');
   });
 
-  it.only('should be able to give you the list of ingredients and list of instructions as one big recipe', () => {
+  it('should be able to give you the list of ingredients and list of instructions as one big recipe', () => {
     const name = "week-old grass clippings";
     const tags = ["decomposing", "snack", "light", "vegan", "greens", "browns"];
     const instructions = [{instruction: "Just do whatever you want", number: 1}, {instruction: "It's a free country.", number: 2}];
