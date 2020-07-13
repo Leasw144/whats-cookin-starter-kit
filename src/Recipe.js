@@ -38,7 +38,11 @@ class Recipe {
           name = ingredient.name;
         }
       });
-      masterList += `• ${recipeIngredient.quantity.amount} ${recipeIngredient.quantity.unit} ${name}<br>`; // add .toFixed(2) to amount?
+      if (recipeIngredient.quantity.amount % 1 === 0) {
+        masterList += `• ${recipeIngredient.quantity.amount} ${recipeIngredient.quantity.unit} ${name}<br>`; // add .toFixed(2) to amount?
+      } else {
+        masterList += `• ${recipeIngredient.quantity.amount.toFixed(2)} ${recipeIngredient.quantity.unit} ${name}<br>`; // add .toFixed(2) to amount?
+      }
       return masterList;
     }, '');
     return ingredientList;
