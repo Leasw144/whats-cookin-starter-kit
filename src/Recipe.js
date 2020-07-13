@@ -38,7 +38,7 @@ class Recipe {
           name = ingredient.name;
         }
       });
-      masterList += `• ${recipeIngredient.quantity.amount} ${recipeIngredient.quantity.unit} ${name}<br>`;
+      masterList += `• ${recipeIngredient.quantity.amount} ${recipeIngredient.quantity.unit} ${name}<br>`; // add .toFixed(2) to amount?
       return masterList;
     }, '');
     return ingredientList;
