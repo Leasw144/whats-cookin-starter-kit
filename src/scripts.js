@@ -1,17 +1,17 @@
 /*eslint-disable*/
 
 const allRecipesDisplay = document.querySelector('.all-recipes-display');
+const randomIndex = Math.floor(Math.random() * usersData.length);
+const currentUser = new User(usersData[randomIndex].name, usersData[randomIndex].id, usersData[randomIndex].pantry);
 const allRecipes = recipeData.map(recipe => {
   return new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
 });
-const randomIndex = Math.floor(Math.random() * usersData.length);
-const currentUser = new User(usersData[randomIndex].name, usersData[randomIndex].id, usersData[randomIndex].pantry);
 
 window.addEventListener('load', loadData);
 document.addEventListener('click', clickWhat);
 
 function clickWhat(event) {
-  if (event.target.innerText.includes('Details')) {
+  if (event.target.innerText === 'Details' || event.target.classList.contains('recipe-img')) {
     displayRecipeDetails(event.target.parentNode.id);
   } else if (event.target.innerText === 'Back to Recipes' || event.target.innerText=== 'View All Recipes'){
     displayAllRecipes();
@@ -36,14 +36,14 @@ function displayAllRecipes() {
 
 function displayRecipeDetails(id) {
   // const recipeDetailsDisplay = document.querySelector('.recipe-details-display');
+  hideElement('all-recipes-display');
+  displayElement('recipe-details-display');
   const image = document.querySelector('.recipe-img-full');
   const name = document.querySelector('.name');
   const ingredients = document.querySelector('.ingredients');
   const cost = document.querySelector('.cost');
   const instructions = document.querySelector('.instructions');
   const recipe = makeNewRecipe(id);
-  hideElement('all-recipes-display');
-  displayElement('recipe-details-display');
   image.src = recipe.image;
   image.alt = `picture of ${recipe.name}`;
   name.innerText = recipe.name;
@@ -119,7 +119,7 @@ function loadRecipes() {
   allRecipesDisplay.innerHTML = '';
   allRecipes.forEach(recipe => {
     allRecipesDisplay.innerHTML += `
-      <div class='recipe-card'>
+      <div id='${recipe.id}' class='recipe-card'>
         <img class='recipe-img' src=${recipe.image} alt='picture of ${recipe.name}'/>
         <footer class='card-footer'>
           <p>${recipe.name}</p>
