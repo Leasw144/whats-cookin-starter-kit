@@ -14,19 +14,18 @@ class Recipe {
     const total = this.ingredients.reduce((totalCost, recipeIngredient) => {
       ingredientsData.forEach(ingredient => {
         if (ingredient.id === recipeIngredient.id) {
-          totalCost += recipeIngredient.quantity.amount * ingredient.estimatedCostInCents;
+          // totalCost += recipeIngredient.quantity.amount * ingredient.estimatedCostInCents;
+          totalCost += ingredient.estimatedCostInCents;
         }
       });
       return totalCost;
     }, 0);
-    return total / 100;
+    return (total / 100).toFixed(2);
   }
 
   getDirections() {
     const directions = this.instructions.reduce((final, step) => {
-      return final += `Step ${step.number}: ${step.instruction}
-
-`
+      return final += `<b>Step ${step.number}:</b> ${step.instruction}<br><br>`;
     }, '');
     return directions
   }
@@ -35,20 +34,21 @@ class Recipe {
     const ingredientList = this.ingredients.reduce((masterList, recipeIngredient) => {
       let name = '';
       ingredientsData.forEach(ingredient => {
-        if(ingredient.id === recipeIngredient.id) {
+        if (ingredient.id === recipeIngredient.id) {
           name = ingredient.name;
         }
       });
-      masterList += `• ${recipeIngredient.quantity.amount} ${recipeIngredient.quantity.unit} of ${name}
-
-`;
+      if (recipeIngredient.quantity.amount % 1 === 0) {
+        masterList += `• ${recipeIngredient.quantity.amount} ${recipeIngredient.quantity.unit} ${name}<br>`; // add .toFixed(2) to amount?
+      } else {
+        masterList += `• ${recipeIngredient.quantity.amount.toFixed(2)} ${recipeIngredient.quantity.unit} ${name}<br>`; // add .toFixed(2) to amount?
+      }
       return masterList;
     }, '');
     return ingredientList;
   }
 
   getRecipeDetails() {
-    console.log(this.getIngredients() + this.getDirections());
     return this.getIngredients() + this.getDirections();
   }
 }

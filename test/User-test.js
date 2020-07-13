@@ -98,9 +98,8 @@ describe('User', () => {
   it('should be able to filter a recipe by tag', () => {
     const allRecipes = [];
     const favRecipes = [];
-
-
   });
+  
   // it('should have an empty array to store recipes to cook by default', () => {
   //   const user = new User();
 
