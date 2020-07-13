@@ -1,6 +1,5 @@
 /*eslint-disable*/
 
-const allRecipesDisplay = document.querySelector('.all-recipes-display');
 const randomIndex = Math.floor(Math.random() * usersData.length);
 const currentUser = new User(usersData[randomIndex].name, usersData[randomIndex].id, usersData[randomIndex].pantry);
 const allRecipes = recipeData.map(recipe => {
@@ -19,9 +18,18 @@ function clickWhat(event) {
 }
 
 function makeNewRecipe(id) {
-  const recipe = recipeData[findRecipe(id)]
-  console.log(recipe)
+  const recipe = recipeData[findRecipe(id)];
   return new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
+}
+
+function findRecipe(id) {
+  let index;
+  recipeData.forEach(recipe => {
+    if (recipe.id === parseInt(id)) {
+      index = recipeData.indexOf(recipe);
+    }
+  });
+  return index;
 }
 
 function displayAllRecipes() {
@@ -39,17 +47,6 @@ function displayRecipeDetails(id) {
   document.querySelector('.ingredients').innerHTML = recipe.getIngredients();
   document.querySelector('.cost').innerHTML = `<b> Total Cost of Ingredients: $${recipe.getCost()}</b>`;
   document.querySelector(".instructions").innerHTML = recipe.getDirections();
-  // const image = document.querySelector(".recipe-img-full").src = recipe.image;
-  // const name = document.querySelector('.name');
-  // const ingredients = document.querySelector('.ingredients');
-  // const cost = document.querySelector('.cost');
-  // const instructions = document.querySelector('.instructions');
-  // image.src = recipe.image;
-  // image.alt = `picture of ${recipe.name}`;
-  // name.innerText = recipe.name;
-  // ingredients.innerHTML = recipe.getIngredients();
-  // cost.innerHTML = `<b> Total Cost of Ingredients: $${recipe.getCost()}</b>`;
-  // instructions.innerHTML = recipe.getDirections();
 
 
   // this function needs to
@@ -62,15 +59,6 @@ function displayRecipeDetails(id) {
   ////// innerHtml of recipe-details-display usiong the assignment operator.
 }
 
-function findRecipe(id) {
-  let index;
-  recipeData.forEach(recipe => {
-    if (recipe.id === parseInt(id)) {
-      index = recipeData.indexOf(recipe);
-    }
-  });
-  return index;
-}
 
 function hideElement(className) {
   document.querySelector(`.${className}`).classList.add("hidden");
@@ -92,6 +80,7 @@ function loadUserName() {
 }
 
 function loadRecipes() {
+  const allRecipesDisplay = document.querySelector(".all-recipes-display");
   allRecipesDisplay.innerHTML = '';
   allRecipes.forEach(recipe => {
     allRecipesDisplay.innerHTML += `
@@ -108,5 +97,5 @@ function loadRecipes() {
       </div>
     `;
   });
-}
+} // Semantically/best practices dictate that id's should only be used once. should we change how this works?
 
