@@ -19,14 +19,9 @@ function clickWhat(event) {
 }
 
 function makeNewRecipe(id) {
-  const index = findRecipe(id);
-  const recipeId = recipeData[index].id;
-  const recipeImage = recipeData[index].image;
-  const recipeIngredients = recipeData[index].ingredients;
-  const recipeInstructions = recipeData[index].instructions;
-  const recipeName = recipeData[index].name;
-  const recipeTags = recipeData[index].tags;
-  return new Recipe(recipeId, recipeImage, recipeIngredients, recipeInstructions, recipeName, recipeTags);
+  const recipe = recipeData[findRecipe(id)]
+  console.log(recipe)
+  return new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
 }
 
 function displayAllRecipes() {
@@ -35,45 +30,26 @@ function displayAllRecipes() {
 }
 
 function displayRecipeDetails(id) {
-  // const recipeDetailsDisplay = document.querySelector('.recipe-details-display');
   hideElement('all-recipes-display');
   displayElement('recipe-details-display');
-  const image = document.querySelector('.recipe-img-full');
-  const name = document.querySelector('.name');
-  const ingredients = document.querySelector('.ingredients');
-  const cost = document.querySelector('.cost');
-  const instructions = document.querySelector('.instructions');
   const recipe = makeNewRecipe(id);
-  image.src = recipe.image;
-  image.alt = `picture of ${recipe.name}`;
-  name.innerText = recipe.name;
-  ingredients.innerHTML = recipe.getIngredients();
-  cost.innerHTML = `<b> Total Cost of Ingredients: $${recipe.getCost()}</b>`;
-  instructions.innerHTML = recipe.getDirections();
-
-
-  // recipeDetailsDisplay.innerHTML = `
-  //   <div class='recipe-details'>
-  //     <div class='image-buttons-tags'>
-  //       <img class='recipe-img-full' src='${recipe.image}' alt='picture of ${recipe.name}' />
-  //       <footer class='recipe-footer'>
-  //         <div class='recipe-buttons'>
-  //           <button><img src="" alt="">♡ Favorite</button>
-  //           <button><img src="" alt="">Add to Menu</button>
-  //           <button><img src="" alt="">Back to Recipes</button>
-  //         </div>
-  //       </footer>
-  //     </div>
-  //     <div class='name-ingredients-instructions'>
-  //       <p class='name'>${recipe.name}</p>
-  //       <p class='ingredients'>${recipe.getIngredients()}</p>
-  //       <p class='cost'><b> Total Cost of Ingredients: $${recipe.getCost()}</b></p>
-  //       <h3>Directions</h3>
-  //       <p class='instructions'>${recipe.getDirections()}</p>
-  //     </div>
-  //   </div>
-  // `;
-
+  document.querySelector(".recipe-img-full").src = recipe.image;
+  document.querySelector(".recipe-img-full").alt = `picture of ${recipe.name}`;
+  document.querySelector(".name").innerText = recipe.name;
+  document.querySelector('.ingredients').innerHTML = recipe.getIngredients();
+  document.querySelector('.cost').innerHTML = `<b> Total Cost of Ingredients: $${recipe.getCost()}</b>`;
+  document.querySelector(".instructions").innerHTML = recipe.getDirections();
+  // const image = document.querySelector(".recipe-img-full").src = recipe.image;
+  // const name = document.querySelector('.name');
+  // const ingredients = document.querySelector('.ingredients');
+  // const cost = document.querySelector('.cost');
+  // const instructions = document.querySelector('.instructions');
+  // image.src = recipe.image;
+  // image.alt = `picture of ${recipe.name}`;
+  // name.innerText = recipe.name;
+  // ingredients.innerHTML = recipe.getIngredients();
+  // cost.innerHTML = `<b> Total Cost of Ingredients: $${recipe.getCost()}</b>`;
+  // instructions.innerHTML = recipe.getDirections();
 
 
   // this function needs to
