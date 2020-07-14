@@ -34,6 +34,10 @@
 
 * Run `open index.html` in your terminal to open the application in your browser. 
 
+## Challenges/Wins
+
+This project was certainly the most open to interpretation of any project to date in our experience at Turing, and at first it make approaching it very intimidating and overwhelming. It really pushed us to take advantage of our organizational tools, and use things like Github Projects to break down the larger task at hand into bite-sized, do-able chunks. Learning how to work together to decide what kind of MVP we wanted to produce was challenging for the same reasons: the spec for this project was very intentionally vague, especially when compared to what we have worked on leading up to this point in the program. By using the project board to outline each next step, we were also able to get a much clearer picture of what this application actually needed to look like. 
+
 ## Contributors
 
 * This project was submitted on 7/15/2020 by [Linus Leas](https://github.com/Leasw144) and [Aaron Burris-DeBoskey](https://github.com/Abdeboskey).
