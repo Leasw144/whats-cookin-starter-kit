@@ -1,13 +1,13 @@
 class Pantry {
   constructor(pantry) {
-    this.ingredients = pantry.ingredients;
+    this.ingredients = pantry
   }
 
 
-  checkPantry(recipeArr) {
-    return recipeArr.reduce((groceryList, recipe) => {
-      recipe.ingredients.forEach(ingredient => {
-        pantry.forEach(pantryItem => {
+  checkPantry(menu) {
+    return menu.reduce((groceryList, recipe) => {
+      recipe.ingredients. forEach(ingredient => {
+        this.ingredients.forEach(pantryItem => {
           if (pantryItem.ingredient === ingredient.id && pantryItem.amount < ingredient.quantity.amount) {
             const amountNeeded = ingredient.quantity.amount - pantryItem.amount
             ingredient.quantity.amount = amountNeeded
