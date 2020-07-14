@@ -34,6 +34,10 @@
 
 * Run `open index.html` in your terminal to open the application in your browser. 
 
+## Contributors
+
+* This project was submitted on 7/15/2020 by [Linus Leas](https://github.com/Leasw144) and [Aaron Burris-DeBoskey](https://github.com/Abdeboskey).
+
 
 
 ---------------------------------------------------------------------
