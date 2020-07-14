@@ -27,15 +27,16 @@ function clickWhat(event) {
   } else if (event.target.innerText === '♥️' && header.innerText.split(' ').includes('Favorites,')) {
     currentUser.removeFavorite(makeNewRecipe(event.target.parentNode.id));
     loadRecipes(currentUser.favoriteRecipes);
+    loadFavoritesHeader();
   } else if (event.target.innerText === '♥️') {
     currentUser.removeFavorite(makeNewRecipe(event.target.parentNode.id));
     document
       .getElementById(event.target.parentNode.id)
       .querySelector(".favorite-button").innerText = "♡";
   } else if (event.target.innerText === 'View Favorite Recipes') {
-    loadFavoritesHeader();
     loadRecipes(currentUser.favoriteRecipes);
     displayAllRecipes();
+    loadFavoritesHeader();
   }
 }
 
