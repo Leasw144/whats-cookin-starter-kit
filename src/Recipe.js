@@ -39,9 +39,9 @@ class Recipe {
         }
       });
       if (recipeIngredient.quantity.amount % 1 === 0) {
-        masterList += `• ${recipeIngredient.quantity.amount} ${recipeIngredient.quantity.unit} ${name}<br>`; // add .toFixed(2) to amount?
+        masterList += `• ${recipeIngredient.quantity.amount} ${recipeIngredient.quantity.unit} ${name}<br>`;
       } else {
-        masterList += `• ${recipeIngredient.quantity.amount.toFixed(2)} ${recipeIngredient.quantity.unit} ${name}<br>`; // add .toFixed(2) to amount?
+        masterList += `• ${recipeIngredient.quantity.amount.toFixed(2)} ${recipeIngredient.quantity.unit} ${name}<br>`; 
       }
       return masterList;
     }, '');

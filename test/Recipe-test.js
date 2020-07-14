@@ -109,16 +109,16 @@ describe.only('Recipe', () => {
   });
 
   it('should be able to get the total cost of all the ingredients in the recipe', () => {
-    const name = "week-old grass clippings";
-    const tags = ["decomposing", "snack", "light", "vegan", "greens", "browns"];
+    const name = 'week-old grass clippings';
+    const tags = ['decomposing', 'snack', 'light', 'vegan', 'greens', 'browns'];
     const instructions = recipeData[1].instructions;
     const ingredients = [{id: 20081, quantity: {amount: 1.5, unit: 'c'}}, {id: 18372, quantity: {amount: 0.5, unit: 'tsp'}}];
-    const img = "https://spoonacular.com/recipeImages/678353-556x370.jpg";
+    const img = 'https://spoonacular.com/recipeImages/678353-556x370.jpg';
     const recipe = new Recipe(24, img, ingredients, instructions, name, tags);
 
     const totalCost = recipe.getCost();
 
-    expect(totalCost).to.equal(5.04);
+    expect(totalCost).to.equal('7.24');
   });
 
   it('should have a method that gets directions', () => {
@@ -154,32 +154,32 @@ describe.only('Recipe', () => {
       }];
     const nachos = new Recipe(24, img, ingredients, instructions, name, tags);
 
-    expect(nachos.getDirections()).to.equal('Step 1: Just do whatever you want\n\nStep 2: It\'s a free country.\n\n');
+    expect(nachos.getDirections()).to.equal('<b>Step 1:</b> Just do whatever you want<br><br><b>Step 2:</b> It\'s a free country.<br><br>');
   });
 
   it('should be able to return the list of ingredients needed as a string', () => {
-    const name = "week-old grass clippings";
-    const tags = ["decomposing", "snack", "light", "vegan", "greens", "browns"];
+    const name = 'week-old grass clippings';
+    const tags = ['decomposing', 'snack', 'light', 'vegan', 'greens', 'browns'];
     const instructions = recipeData[1].instructions;
     const ingredients = [{id: 20081, quantity: {amount: 1.5, unit: 'c'}}, {id: 18372, quantity: {amount: 0.5, unit: 'tsp'}}];
-    const img = "https://spoonacular.com/recipeImages/678353-556x370.jpg";
+    const img = 'https://spoonacular.com/recipeImages/678353-556x370.jpg';
     const recipe = new Recipe(24, img, ingredients, instructions, name, tags);
     
     const listOfIngredients = recipe.getIngredients();
 
-    expect(listOfIngredients).to.equal('• 1.5 c of wheat flour\n\n• 0.5 tsp of bicarbonate of soda\n\n');
+    expect(listOfIngredients).to.equal('• 1.50 c wheat flour<br>• 0.50 tsp bicarbonate of soda<br>');
   });
 
   it('should be able to give you the list of ingredients and list of instructions as one big recipe', () => {
-    const name = "week-old grass clippings";
-    const tags = ["decomposing", "snack", "light", "vegan", "greens", "browns"];
-    const instructions = [{instruction: "Just do whatever you want", number: 1}, {instruction: "It's a free country.", number: 2}];
+    const name = 'week-old grass clippings';
+    const tags = ['decomposing', 'snack', 'light', 'vegan', 'greens', 'browns'];
+    const instructions = [{instruction: 'Just do whatever you want', number: 1}, {instruction: 'It\'s a free country.', number: 2}];
     const ingredients = [{id: 20081, quantity: {amount: 1.5, unit: 'c'}}, {id: 18372, quantity: {amount: 0.5, unit: 'tsp'}}];
-    const img = "https://spoonacular.com/recipeImages/678353-556x370.jpg";
+    const img = 'https://spoonacular.com/recipeImages/678353-556x370.jpg';
     const recipe = new Recipe(24, img, ingredients, instructions, name, tags);
 
     const bigOlRecipe = recipe.getRecipeDetails();
 
-    expect(bigOlRecipe).to.equal('• 1.5 c of wheat flour\n\n• 0.5 tsp of bicarbonate of soda\n\nStep 1: Just do whatever you want\n\nStep 2: It\'s a free country.\n\n');
+    expect(bigOlRecipe).to.equal('• 1.50 c wheat flour<br>• 0.50 tsp bicarbonate of soda<br><b>Step 1:</b> Just do whatever you want<br><br><b>Step 2:</b> It\'s a free country.<br><br>');
   });
 });
