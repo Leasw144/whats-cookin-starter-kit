@@ -1,6 +1,7 @@
 /*eslint-disable*/
 
 const header = document.querySelector("h1");
+const detailsFavoriteButton = document.querySelector('.details-favorite-button');
 const randomIndex = Math.floor(Math.random() * usersData.length);
 const currentUser = new User(usersData[randomIndex].name, usersData[randomIndex].id, usersData[randomIndex].pantry);
 const allRecipes = recipeData.map(recipe => {
@@ -22,7 +23,7 @@ function clickWhat(event) {
   } else if (event.target.innerText === '♡') {
     currentUser.addFavorite(makeNewRecipe(event.target.parentNode.id));
     document
-      .getElementById(event.target.parentNode.id)
+      .getElementById(event.target.parentNode.id) // does this need parentNode? Maybe this is its own function 'favorite()'
       .querySelector('.favorite-button').innerText = "♥️";
   } else if (event.target.innerText === '♥️' && header.innerText.split(' ').includes('Favorites,')) {
     currentUser.removeFavorite(makeNewRecipe(event.target.parentNode.id));
@@ -31,12 +32,24 @@ function clickWhat(event) {
   } else if (event.target.innerText === '♥️') {
     currentUser.removeFavorite(makeNewRecipe(event.target.parentNode.id));
     document
-      .getElementById(event.target.parentNode.id)
+      .getElementById(event.target.parentNode.id) // does this need parentNode? Maybe this is its own function 'unfavorite()'
       .querySelector(".favorite-button").innerText = "♡";
   } else if (event.target.innerText === 'View Favorite Recipes') {
     loadRecipes(currentUser.favoriteRecipes);
     displayAllRecipes();
     loadFavoritesHeader();
+  } else if (event.target.classList.contains('details-favorite-button')) {
+    toggleDetailFavoriteIcon(event);
+  }
+}
+
+function toggleDetailFavoriteIcon(event) {
+  if (detailsFavoriteButton.innerText.split(' ').includes('♡')) {
+    detailsFavoriteButton.innerText = '♥️ Favorite';
+    currentUser.addFavorite(makeNewRecipe(event.target.parentNode.id));
+  } else if (detailsFavoriteButton.innerText.split(' ').includes('♥️')) {
+    detailsFavoriteButton.innerText = '♡ Favorite';
+    currentUser.removeFavorite(makeNewRecipe(event.target.parentNode.id));
   }
 }
 
@@ -74,6 +87,7 @@ function displayRecipeDetails(id) {
   document.querySelector('.cost').innerHTML = `<b> Total Cost of Ingredients: $${recipe.getCost()}</b>`;
   document.querySelector(".instructions").innerHTML = recipe.getDirections();
   document.querySelector('.details-favorite-button').innerText = `${icon} Favorite`;
+  document.querySelector('.details-favorite-button').parentNode.id = recipe.id;
 
 
   // this function needs to
