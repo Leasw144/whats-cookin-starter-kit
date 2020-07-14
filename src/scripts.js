@@ -14,11 +14,11 @@ document.addEventListener('click', clickWhat);
 function clickWhat(event) {
   if (event.target.innerText === 'Details' || event.target.classList.contains('recipe-img')) {
     displayRecipeDetails(event.target.parentNode.id);
-  } else if (event.target.innerText=== 'View All Recipes') {
+  } else if (event.target.innerText === 'View All Recipes') {
     loadUserName();
     loadRecipes(allRecipes);
     displayAllRecipes();
-  } else if (event.target.innerText === 'Back to Recipes') {
+  } else if (event.target.innerText === 'Back to Recipes') { // need to invoke load recipes, but make it specific to what you're going back to (allrecipes vs favoriteRecipes)
     displayAllRecipes()
   } else if (event.target.innerText === '♡') {
     currentUser.addFavorite(makeNewRecipe(event.target.parentNode.id));
@@ -88,16 +88,6 @@ function displayRecipeDetails(id) {
   document.querySelector(".instructions").innerHTML = recipe.getDirections();
   document.querySelector('.details-favorite-button').innerText = `${icon} Favorite`;
   document.querySelector('.details-favorite-button').parentNode.id = recipe.id;
-
-
-  // this function needs to
-  //// add hidden to the classList of all-recipes-display (section for cards)
-  //// remove hidden from the classList of recipe-details-display (section for details)
-  //// inject new innerHTML into recipe-details-display
-  ////// to do this, we need to retrieve the id of the recipe card that was selected
-  ////// we need to loop through recipes dataset, and find the recipe with the matching id.
-  ////// if the currentrecipe.id === recipeData.id, we will inject the details of that recipe into the 
-  ////// innerHtml of recipe-details-display usiong the assignment operator.
 }
 
 
