@@ -20,6 +20,19 @@
 * Display information on the page while maintaining ability to test class properties and mehtods.
 * Create a user interface that is easy to use and displays information in a clear way.
 
+## Setup/Install
+
+* Clone down this repo from the command line with the command:
+
+```bash
+ git clone git@github.com:Leasw144/whats-cookin-starter-kit.git whats-cookin
+```
+
+* Once you have cloned the repo, run `cd whats-cookin` to change into the directory.
+
+* Run `npm install` to install the library dependencies.
+
+* Run `open index.html` in your terminal to open the application in your browser. 
 
 
 
