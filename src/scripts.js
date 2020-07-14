@@ -55,8 +55,8 @@ function toggleFavorite(event) {
 function favorite(event) {
   currentUser.addFavorite(makeNewRecipe(event.target.parentNode.id));  
   document
-  .getElementById(event.target.parentNode.id) // does this need parentNode? 
-  .querySelector(".favorite-button").innerText = "♥️";
+    .getElementById(event.target.parentNode.id) // does this need parentNode? 
+    .querySelector(".favorite-button").innerText = "♥️";
 }
 
 function unFavorite(event) {
