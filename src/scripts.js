@@ -13,10 +13,12 @@ document.addEventListener('click', clickWhat);
 function clickWhat(event) {
   if (event.target.innerText === 'Details' || event.target.classList.contains('recipe-img')) {
     displayRecipeDetails(event.target.parentNode.id);
-  } else if (event.target.innerText === 'Back to Recipes' || event.target.innerText=== 'View All Recipes'){
+  } else if (event.target.innerText=== 'View All Recipes') {
     loadUserName();
     loadRecipes(allRecipes);
     displayAllRecipes();
+  } else if (event.target.innerText === 'Back to Recipes') {
+    displayAllRecipes()
   } else if (event.target.innerText === '♡') {
     currentUser.addFavorite(makeNewRecipe(event.target.parentNode.id));
     document
@@ -33,6 +35,7 @@ function clickWhat(event) {
   } else if (event.target.innerText === 'View Favorite Recipes') {
     loadFavoritesHeader();
     loadRecipes(currentUser.favoriteRecipes);
+    displayAllRecipes();
   }
 }
 
@@ -61,12 +64,15 @@ function displayRecipeDetails(id) {
   hideElement('all-recipes-display');
   displayElement('recipe-details-display');
   const recipe = makeNewRecipe(id);
+  let isFavorite = currentUser.favoriteRecipes.some(fav => fav.id === recipe.id); //Maybe extract this and make a function
+  let icon = isFavorite ? '♥️' : '♡';
   document.querySelector(".recipe-img-full").src = recipe.image;
   document.querySelector(".recipe-img-full").alt = `picture of ${recipe.name}`;
   document.querySelector(".name").innerText = recipe.name;
   document.querySelector('.ingredients').innerHTML = recipe.getIngredients();
   document.querySelector('.cost').innerHTML = `<b> Total Cost of Ingredients: $${recipe.getCost()}</b>`;
   document.querySelector(".instructions").innerHTML = recipe.getDirections();
+  document.querySelector('.details-favorite-button').innerText = `${icon} Favorite`;
 
 
   // this function needs to
@@ -100,7 +106,11 @@ function loadUserName() {
 
 function loadFavoritesHeader() {
   const name = currentUser.name.split(' ');
-  header.innerText = `Here Are Your Favorites, ${name[0]}`;
+  if (currentUser.favoriteRecipes.length === 0) {
+    header.innerText = `You Have No Favorites, ${name[0]}`;
+  } else {
+    header.innerText = `Here Are Your Favorites, ${name[0]}`;
+  }
 }
 
 function loadRecipes(collection) {
