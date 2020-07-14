@@ -39,7 +39,7 @@ function clickWhat(event) {
     displayAllRecipes();
     loadFavoritesHeader();
   } else if (event.target.classList.contains('details-favorite-button')) {
-    toggleDetailFavoriteIcon(event);
+    toggleDetailFavoriteIcon(event); // How to get header to update if last favorite is removed in detail view of the favorites view?
   }
 }
 
@@ -68,7 +68,6 @@ function findRecipe(id) {
   });
   return index;
 }
-
 
 function displayAllRecipes() {
    hideElement("recipe-details-display");
