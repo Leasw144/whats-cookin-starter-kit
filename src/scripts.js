@@ -50,6 +50,7 @@ function toggleDetailFavoriteIcon(event) {
   } else if (detailsFavoriteButton.innerText.split(' ').includes('♥️')) {
     detailsFavoriteButton.innerText = '♡ Favorite';
     currentUser.removeFavorite(makeNewRecipe(event.target.parentNode.id));
+    loadRecipes(currentUser.favoriteRecipes);
   }
 }
 
