@@ -95,14 +95,245 @@ describe.only('User', () => {
     expect(user.favoriteRecipes[1]).to.equal(undefined);
   });
 
-  it('should be able to filter a recipe by tag', () => {
-    const allRecipes = [];
-    const favRecipes = [];
-  });
-  
-  // it('should have an empty array to store recipes to cook by default', () => {
-  //   const user = new User();
+  it('should be able to search for a recipe by tag', () => {
+    const recipes = [
+      {
+        name: "Soggy Frosted Flakes",
+        tags: ["breakfast", "sauce", "hot"],
+      },
+      {
+        name: "Dry Ice Clusters",
+        tags: ["crunchy", "dry", "cold"],
+      },
+      {
+        name: "Irving's Saucy Hot Dogs",
+        tags: ["sauce", "thicc", "hearty"],
+      },
+    ];
+    
+    const user = new User();
 
-  //   expect(user.menu).to.deep.equal(new Menu());
-  // });
+    const searchResults = user.filterByTag(recipes, 'hearty');
+
+    expect(searchResults).to.deep.equal([recipes[2]]);
+  });
+
+  it('should be able to search for the tag no matter what kind of capitalization is used', () => {
+    const recipes = [
+      {
+        name: "Soggy Frosted Flakes",
+        tags: ["breakfast", "sauce", "hot"],
+      },
+      {
+        name: "Dry Ice Clusters",
+        tags: ["crunchy", "dry", "cold"],
+      },
+      {
+        name: "Irving's Saucy Hot Dogs",
+        tags: ["sauce", "thicc", "hearty"],
+      },
+    ];
+    
+    const user = new User();
+
+    const searchResults = user.filterByTag(recipes, 'bReaKFaSt');
+
+    expect(searchResults).to.deep.equal([recipes[0]]);
+  });
+
+  it('should be able to search for the tag even if there is extra whitespace', () => {
+    const recipes = [
+      {
+        name: "Soggy Frosted Flakes",
+        tags: ["breakfast", "sauce", "hot"],
+      },
+      {
+        name: "Dry Ice Clusters",
+        tags: ["crunchy", "dry", "cold"],
+      },
+      {
+        name: "Irving's Saucy Hot Dogs",
+        tags: ["sauce", "thicc", "hearty"],
+      },
+    ];
+    
+    const user = new User();
+
+    const searchResults = user.filterByTag(recipes, 'bRea KFaSt  ');
+
+    expect(searchResults).to.deep.equal([recipes[0]]);
+  });
+
+  it('should be able to return all of the recipes that include that tag', () => {
+    const recipes = [
+      {
+        name: "Soggy Frosted Flakes",
+        tags: ["breakfast", "sauce", "hot"],
+      },
+      {
+        name: "Dry Ice Clusters",
+        tags: ["crunchy", "dry", "cold"],
+      },
+      {
+        name: "Irving's Saucy Hot Dogs",
+        tags: ["sauce", "thicc", "hearty"],
+      },
+    ];
+    
+    const user = new User();
+
+    const searchResults = user.filterByTag(recipes, 'S auCe');
+
+    expect(searchResults).to.deep.equal([recipes[0], recipes[2]]);
+  });
+
+  it('should be able to search for a recipe by name', () => {
+    const recipes = [
+      {
+        name: "Soggy Frosted Flakes",
+        tags: ["breakfast", "sauce", "hot"],
+      },
+      {
+        name: "Dry Ice Clusters",
+        tags: ["crunchy", "dry", "cold"],
+      },
+      {
+        name: "Irving's Saucy Hot Dogs",
+        tags: ["sauce", "thicc", "hearty"],
+      },
+    ];
+    
+    const user = new User();
+
+    const searchResults = user.searchByName(recipes, 'Dogs');
+
+    expect(searchResults).to.deep.equal([recipes[2]]);
+  });
+
+  it('should be able to search for the name no matter what kind of capitalization is used', () => {
+    const recipes = [
+      {
+        name: "Soggy Frosted Flakes",
+        tags: ["breakfast", "sauce", "hot"],
+      },
+      {
+        name: "Dry Ice Clusters",
+        tags: ["crunchy", "dry", "cold"],
+      },
+      {
+        name: "Irving's Saucy Hot Dogs",
+        tags: ["sauce", "thicc", "hearty"],
+      },
+    ];
+    
+    const user = new User();
+
+    const searchResults = user.searchByName(recipes, 'soGGy');
+
+    expect(searchResults).to.deep.equal([recipes[0]]);
+  });
+
+  it('should be able to search for the name even if there is extra whitespace', () => {
+    const recipes = [
+      {
+        name: "Soggy Frosted Flakes",
+        tags: ["breakfast", "sauce", "hot"],
+      },
+      {
+        name: "Dry Ice Clusters",
+        tags: ["crunchy", "dry", "cold"],
+      },
+      {
+        name: "Irving's Saucy Hot Dogs",
+        tags: ["sauce", "thicc", "hearty"],
+      },
+    ];
+    
+    const user = new User();
+
+    const searchResults = user.searchByName(recipes, 'doGs ');
+
+    expect(searchResults).to.deep.equal([recipes[2]]);
+  });
+
+  it('should be able to return all of the recipes that include that name', () => {
+    const recipes = [
+      {
+        name: "Soggy Frosted Flakes",
+        tags: ["breakfast", "sauce", "hot"],
+      },
+      {
+        name: "Dry Ice Clusters",
+        tags: ["crunchy", "dry", "cold"],
+      },
+      {
+        name: "Irving's Saucy Hot Dogs",
+        tags: ["sauce", "thicc", "hearty"],
+      },
+      {
+        name: "Lizzelle's Lneccesarily Large Hot Dogs",
+        tags: ["big", "lunch", "hearty"],
+      }
+    ];
+    
+    const user = new User();
+
+    const searchResults = user.searchByName(recipes, 'DogS');
+
+    expect(searchResults).to.deep.equal([recipes[2], recipes[3]]);
+  });
+
+  it('should be able to search by name and tag at the same time', () => {
+    const recipes = [
+      {
+        name: "Soggy Frosted Flakes",
+        tags: ["breakfast", "sauce", "hot"],
+      },
+      {
+        name: "Dry Ice Clusters",
+        tags: ["crunchy", "dry", "cold"],
+      },
+      {
+        name: "Irving's Saucy Hot Dogs",
+        tags: ["sauce", "thicc", "hearty"],
+      },
+      {
+        name: "Lizzelle's Lneccesarily Large Hot Dogs",
+        tags: ["big", "lunch", "hearty"],
+      }
+    ];
+    
+    const user = new User();
+    const searchWords = ['hOt']
+    const searchResults = user.searchFor(recipes, searchWords);
+
+    expect(searchResults).to.deep.equal([recipes[0], recipes[2], recipes[3]]);
+  });
+
+  it("should not return duplicates while searching by name and tag", () => {
+    const recipes = [
+      {
+        name: "Soggy Frosted Flakes",
+        tags: ["breakfast", "sauce", "hot"],
+      },
+      {
+        name: "Dry Ice Clusters",
+        tags: ["crunchy", "dry", "cold"],
+      },
+      {
+        name: "Irving's Saucy Hot Dogs",
+        tags: ["sauce", "thicc", "hearty"],
+      },
+      {
+        name: "Lizzelle's Lneccesarily Large Hot Dogs",
+        tags: ["big", "lunch", "hearty"],
+      },
+    ];
+
+    const user = new User();
+    const searchWords = ["hOt", 'doG', 'soggy', 'sau Ce'];
+    const searchResults = user.searchFor(recipes, searchWords);
+
+    expect(searchResults).to.deep.equal([recipes[0], recipes[2], recipes[3]]);
+  });
 });
