@@ -21,11 +21,30 @@ class User {
       }
     });
   }
-  
-  filterByType(collection, tag) {
+
+  filterByTag(collection, tag) {
     return collection.filter((recipe) => {
-      return recipe.tags.includes(tag);
+      let cleanSearch = tag.toLowerCase().trim().split(" ").join("");
+      return recipe.tags.includes(cleanSearch);
     });
+  }
+
+  searchByName(collection, name) {
+    return collection.filter((recipe) => {
+      let recipeWords = recipe.name.toLowerCase().split(" ");
+      let cleanSearch = name.toLowerCase().trim();
+      return recipeWords.includes(cleanSearch);
+    });
+  }
+
+  searchFor(collection, searchTerms) {
+    const searchResults = searchTerms.reduce((results, term) => {
+      const tags = this.filterByTag(collection, term);
+      const names = this.searchByName(collection, term);
+      return results.concat(tags, names);
+    }, []);
+    let unique = [...new Set(searchResults)];
+    return unique;
   }
 }
 
