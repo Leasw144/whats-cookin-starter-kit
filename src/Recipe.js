@@ -27,7 +27,7 @@ class Recipe {
     const directions = this.instructions.reduce((final, step) => {
       return final += `<b>Step ${step.number}:</b> ${step.instruction}<br><br>`;
     }, '');
-    return directions
+    return directions;
   }
 
   getIngredients() {
