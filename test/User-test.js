@@ -18,12 +18,6 @@ describe.only('User', () => {
 
     expect(user).to.be.an.instanceof(User);
   });
-
-  // it.skip('should have a number as an ID', () => {
-    //   const user = new User('Fred');
-    
-    //   expect(user.id).to.equal();
-    // });
     
   it('should be able to have a name', () => {
     const user = new User('Fred', 1);
@@ -98,16 +92,16 @@ describe.only('User', () => {
   it('should be able to search for a recipe by tag', () => {
     const recipes = [
       {
-        name: "Soggy Frosted Flakes",
-        tags: ["breakfast", "sauce", "hot"],
+        name: 'Soggy Frosted Flakes',
+        tags: ['breakfast', 'sauce', 'hot'],
       },
       {
-        name: "Dry Ice Clusters",
-        tags: ["crunchy", "dry", "cold"],
+        name: 'Dry Ice Clusters',
+        tags: ['crunchy', 'dry', 'cold'],
       },
       {
-        name: "Irving's Saucy Hot Dogs",
-        tags: ["sauce", "thicc", "hearty"],
+        name: 'Irving\'s Saucy Hot Dogs',
+        tags: ['sauce', 'thicc', 'hearty'],
       },
     ];
     
@@ -121,16 +115,16 @@ describe.only('User', () => {
   it('should be able to search for the tag no matter what kind of capitalization is used', () => {
     const recipes = [
       {
-        name: "Soggy Frosted Flakes",
-        tags: ["breakfast", "sauce", "hot"],
+        name: 'Soggy Frosted Flakes',
+        tags: ['breakfast', 'sauce', 'hot'],
       },
       {
-        name: "Dry Ice Clusters",
-        tags: ["crunchy", "dry", "cold"],
+        name: 'Dry Ice Clusters',
+        tags: ['crunchy', 'dry', 'cold'],
       },
       {
-        name: "Irving's Saucy Hot Dogs",
-        tags: ["sauce", "thicc", "hearty"],
+        name: 'Irving\'s Saucy Hot Dogs',
+        tags: ['sauce', 'thicc', 'hearty'],
       },
     ];
     
@@ -144,16 +138,16 @@ describe.only('User', () => {
   it('should be able to search for the tag even if there is extra whitespace', () => {
     const recipes = [
       {
-        name: "Soggy Frosted Flakes",
-        tags: ["breakfast", "sauce", "hot"],
+        name: 'Soggy Frosted Flakes',
+        tags: ['breakfast', 'sauce', 'hot'],
       },
       {
-        name: "Dry Ice Clusters",
-        tags: ["crunchy", "dry", "cold"],
+        name: 'Dry Ice Clusters',
+        tags: ['crunchy', 'dry', 'cold'],
       },
       {
-        name: "Irving's Saucy Hot Dogs",
-        tags: ["sauce", "thicc", "hearty"],
+        name: 'Irving\'s Saucy Hot Dogs',
+        tags: ['sauce', 'thicc', 'hearty'],
       },
     ];
     
@@ -167,16 +161,16 @@ describe.only('User', () => {
   it('should be able to return all of the recipes that include that tag', () => {
     const recipes = [
       {
-        name: "Soggy Frosted Flakes",
-        tags: ["breakfast", "sauce", "hot"],
+        name: 'Soggy Frosted Flakes',
+        tags: ['breakfast', 'sauce', 'hot'],
       },
       {
-        name: "Dry Ice Clusters",
-        tags: ["crunchy", "dry", "cold"],
+        name: 'Dry Ice Clusters',
+        tags: ['crunchy', 'dry', 'cold'],
       },
       {
-        name: "Irving's Saucy Hot Dogs",
-        tags: ["sauce", "thicc", "hearty"],
+        name: 'Irving\'s Saucy Hot Dogs',
+        tags: ['sauce', 'thicc', 'hearty'],
       },
     ];
     
@@ -190,16 +184,16 @@ describe.only('User', () => {
   it('should be able to search for a recipe by name', () => {
     const recipes = [
       {
-        name: "Soggy Frosted Flakes",
-        tags: ["breakfast", "sauce", "hot"],
+        name: 'Soggy Frosted Flakes',
+        tags: ['breakfast', 'sauce', 'hot'],
       },
       {
-        name: "Dry Ice Clusters",
-        tags: ["crunchy", "dry", "cold"],
+        name: 'Dry Ice Clusters',
+        tags: ['crunchy', 'dry', 'cold'],
       },
       {
-        name: "Irving's Saucy Hot Dogs",
-        tags: ["sauce", "thicc", "hearty"],
+        name: 'Irving\'s Saucy Hot Dogs',
+        tags: ['sauce', 'thicc', 'hearty'],
       },
     ];
     
@@ -213,16 +207,16 @@ describe.only('User', () => {
   it('should be able to search for the name no matter what kind of capitalization is used', () => {
     const recipes = [
       {
-        name: "Soggy Frosted Flakes",
-        tags: ["breakfast", "sauce", "hot"],
+        name: 'Soggy Frosted Flakes',
+        tags: ['breakfast', 'sauce', 'hot'],
       },
       {
-        name: "Dry Ice Clusters",
-        tags: ["crunchy", "dry", "cold"],
+        name: 'Dry Ice Clusters',
+        tags: ['crunchy', 'dry', 'cold'],
       },
       {
-        name: "Irving's Saucy Hot Dogs",
-        tags: ["sauce", "thicc", "hearty"],
+        name: 'Irving\'s Saucy Hot Dogs',
+        tags: ['sauce', 'thicc', 'hearty'],
       },
     ];
     
@@ -236,16 +230,16 @@ describe.only('User', () => {
   it('should be able to search for the name even if there is extra whitespace', () => {
     const recipes = [
       {
-        name: "Soggy Frosted Flakes",
-        tags: ["breakfast", "sauce", "hot"],
+        name: 'Soggy Frosted Flakes',
+        tags: ['breakfast', 'sauce', 'hot'],
       },
       {
-        name: "Dry Ice Clusters",
-        tags: ["crunchy", "dry", "cold"],
+        name: 'Dry Ice Clusters',
+        tags: ['crunchy', 'dry', 'cold'],
       },
       {
-        name: "Irving's Saucy Hot Dogs",
-        tags: ["sauce", "thicc", "hearty"],
+        name: 'Irving\'s Saucy Hot Dogs',
+        tags: ['sauce', 'thicc', 'hearty'],
       },
     ];
     
@@ -259,20 +253,20 @@ describe.only('User', () => {
   it('should be able to return all of the recipes that include that name', () => {
     const recipes = [
       {
-        name: "Soggy Frosted Flakes",
-        tags: ["breakfast", "sauce", "hot"],
+        name: 'Soggy Frosted Flakes',
+        tags: ['breakfast', 'sauce', 'hot'],
       },
       {
-        name: "Dry Ice Clusters",
-        tags: ["crunchy", "dry", "cold"],
+        name: 'Dry Ice Clusters',
+        tags: ['crunchy', 'dry', 'cold'],
       },
       {
-        name: "Irving's Saucy Hot Dogs",
-        tags: ["sauce", "thicc", "hearty"],
+        name: 'Irving\'s Saucy Hot Dogs',
+        tags: ['sauce', 'thicc', 'hearty'],
       },
       {
-        name: "Lizzelle's Lneccesarily Large Hot Dogs",
-        tags: ["big", "lunch", "hearty"],
+        name: 'Lizzelle\'s Uneccesarily Large Hot Dogs',
+        tags: ['big', 'lunch', 'hearty'],
       }
     ];
     
@@ -286,20 +280,20 @@ describe.only('User', () => {
   it('should be able to search by name and tag at the same time', () => {
     const recipes = [
       {
-        name: "Soggy Frosted Flakes",
-        tags: ["breakfast", "sauce", "hot"],
+        name: 'Soggy Frosted Flakes',
+        tags: ['breakfast', 'sauce', 'hot'],
       },
       {
-        name: "Dry Ice Clusters",
-        tags: ["crunchy", "dry", "cold"],
+        name: 'Dry Ice Clusters',
+        tags: ['crunchy', 'dry', 'cold'],
       },
       {
-        name: "Irving's Saucy Hot Dogs",
-        tags: ["sauce", "thicc", "hearty"],
+        name: 'Irving\'s Saucy Hot Dogs',
+        tags: ['sauce', 'thicc', 'hearty'],
       },
       {
-        name: "Lizzelle's Lneccesarily Large Hot Dogs",
-        tags: ["big", "lunch", "hearty"],
+        name: 'Lizzelle\'s Uneccesarily Large Hot Dogs',
+        tags: ['big', 'lunch', 'hearty'],
       }
     ];
     
@@ -310,28 +304,28 @@ describe.only('User', () => {
     expect(searchResults).to.deep.equal([recipes[0], recipes[2], recipes[3]]);
   });
 
-  it("should not return duplicates while searching by name and tag", () => {
+  it('should not return duplicates while searching by name and tag', () => {
     const recipes = [
       {
-        name: "Soggy Frosted Flakes",
-        tags: ["breakfast", "sauce", "hot"],
+        name: 'Soggy Frosted Flakes',
+        tags: ['breakfast', 'sauce', 'hot'],
       },
       {
-        name: "Dry Ice Clusters",
-        tags: ["crunchy", "dry", "cold"],
+        name: 'Dry Ice Clusters',
+        tags: ['crunchy', 'dry', 'cold'],
       },
       {
-        name: "Irving's Saucy Hot Dogs",
-        tags: ["sauce", "thicc", "hearty"],
+        name: 'Irving\'s Saucy Hot Dogs',
+        tags: ['sauce', 'thicc', 'hearty'],
       },
       {
-        name: "Lizzelle's Lneccesarily Large Hot Dogs",
-        tags: ["big", "lunch", "hearty"],
+        name: 'Lizzelle\'s Uneccesarily Large Hot Dogs',
+        tags: ['big', 'lunch', 'hearty'],
       },
     ];
 
     const user = new User();
-    const searchWords = ["hOt", 'doG', 'soggy', 'sau Ce'];
+    const searchWords = ['hOt', 'doG', 'soggy', 'sau Ce'];
     const searchResults = user.searchFor(recipes, searchWords);
 
     expect(searchResults).to.deep.equal([recipes[0], recipes[2], recipes[3]]);
