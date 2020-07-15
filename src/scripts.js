@@ -111,6 +111,39 @@ function displayRecipeDetails(id) {
   document.querySelector(".instructions").innerHTML = recipe.getDirections();
   document.querySelector('.details-favorite-button').innerText = `${icon} Favorite`;
   document.querySelector('.details-favorite-button').parentNode.id = recipe.id;
+  
+  document.querySelector(".needed-groceries").innerText = getGroceryList(recipe)
+}
+
+function getGroceryList(selectedRecipe) {
+  debugger
+  const neededGroceries = currentUser.pantry.checkPantry(selectedRecipe);
+  if(neededGroceries.length === 0) {
+    return 'You\'re ready to make this recipe!'
+  } else {
+  const groceryList = neededGroceries.reduce((masterGrocers, recipeIngredient) => {
+    let name = '';
+    ingredientsData.forEach(ingredient => {
+      if(ingredient.id === recipeIngredient.id) {
+        name = ingredient.name
+      }
+    })
+  masterGrocers += `• ${name}<br>`
+  return masterGrocers
+  }, '')
+  
+  return groceryList
+    }
+  // Taking in an array of objects that contains an id, and an object
+  // want to return a string that lists the needed ingredients
+  // // similar to getIngredients of Recipe.js
+  // Because you want it all as a collection of strings, should use reduce to loop through the recipes ingredients
+  // create an empty string variable of name 
+  // loop through the ingredientsData file using forEach
+  // // if the id in ingredientsData(probably named as ingredient.id) matches recipeIngredient, assign var name to ingredient.name
+  // GroceryList is your acc
+  // // have that += the interpolated information
+  // // // probably like, ` - ${name} - ${recipeIngredient.quantity.amount}`
 }
 
 
