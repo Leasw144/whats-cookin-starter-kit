@@ -10,8 +10,8 @@ class Recipe {
     this.tags = tags;
   }
 
-  getCost() {
-    const total = this.ingredients.reduce((totalCost, recipeIngredient) => {
+  getCost(ingredientsNeeded) {
+    const total = ingredientsNeeded.reduce((totalCost, recipeIngredient) => {
       ingredientsData.forEach(ingredient => {
         if (ingredient.id === recipeIngredient.id) {
           // totalCost += recipeIngredient.quantity.amount * ingredient.estimatedCostInCents;
