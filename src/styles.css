@@ -153,14 +153,6 @@ h1 {
   align-self: center;
 }
 
-.card-footer {
-  /* background: #f5f5f5;
-  border-radius: .5em .5em 1em 1em;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap; */
-}
-
 .recipe-card p {
   text-align: center;
   color: #f5f5f5;
@@ -218,6 +210,10 @@ h1 {
   height: 2.5em;
   width: 10em;
   background: #f5f5f5;
+}
+
+.grocery-list {
+  margin-left: 3em;
 }
 
 .name-ingredients-instructions {
