@@ -6,7 +6,7 @@ const userData = require('../data/users');
 const Pantry = require('../src/Pantry');
 const Recipe = require('../src/Recipe');
 
-describe.only('Pantry', () => {
+describe('Pantry', () => {
 
   it('should be a function', () => {
     expect(Pantry).to.be.a('function');
@@ -39,7 +39,7 @@ describe.only('Pantry', () => {
     expect(result).to.equal(recipe);
   });
 
-  it.only('should be able to check recipe ingredients against the pantry and return an array of needed items and their amounts', () => {
+  it('should be able to check recipe ingredients against the pantry and return an array of needed items and their amounts', () => {
     
     const recipe = [
       {
