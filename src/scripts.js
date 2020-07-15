@@ -55,14 +55,14 @@ function toggleFavorite(event) {
 function favorite(event) {
   currentUser.addFavorite(makeNewRecipe(event.target.parentNode.id));  
   document
-    .getElementById(event.target.parentNode.id) // does this need parentNode? 
+    .getElementById(event.target.parentNode.id) 
     .querySelector(".favorite-button").innerText = "♥️";
 }
 
 function unFavorite(event) {
   currentUser.removeFavorite(makeNewRecipe(event.target.parentNode.id));
   document
-    .getElementById(event.target.parentNode.id) // does this need parentNode? 
+    .getElementById(event.target.parentNode.id) 
     .querySelector(".favorite-button").innerText = "♡";
 }
 
@@ -101,49 +101,36 @@ function displayRecipeDetails(id) {
   hideElement('all-recipes-display');
   displayElement('recipe-details-display');
   const recipe = makeNewRecipe(id);
-  let isFavorite = currentUser.favoriteRecipes.some(fav => fav.id === recipe.id); //Maybe extract this and make a function
+  let isFavorite = currentUser.favoriteRecipes.some(fav => fav.id === recipe.id);
   let icon = isFavorite ? '♥️' : '♡';
   document.querySelector(".recipe-img-full").src = recipe.image;
   document.querySelector(".recipe-img-full").alt = `picture of ${recipe.name}`;
   document.querySelector(".name").innerText = recipe.name;
   document.querySelector('.ingredients').innerHTML = recipe.getIngredients();
-  document.querySelector('.cost').innerHTML = `<b> Total Cost of Ingredients: $${recipe.getCost()}</b>`;
+  document.querySelector('.cost').innerHTML = `<b> Total Cost of Ingredients: $${recipe.getCost(recipe.ingredients)}</b>`;
   document.querySelector(".instructions").innerHTML = recipe.getDirections();
   document.querySelector('.details-favorite-button').innerText = `${icon} Favorite`;
   document.querySelector('.details-favorite-button').parentNode.id = recipe.id;
-  
-  document.querySelector(".needed-groceries").innerText = getGroceryList(recipe)
+  document.querySelector(".needed-groceries").innerHTML = getGroceryList(recipe);
 }
 
 function getGroceryList(selectedRecipe) {
-  debugger
   const neededGroceries = currentUser.pantry.checkPantry(selectedRecipe);
   if(neededGroceries.length === 0) {
-    return 'You\'re ready to make this recipe!'
+    return 'Nothing, you have everything you need to make this recipe!';
   } else {
-  const groceryList = neededGroceries.reduce((masterGrocers, recipeIngredient) => {
-    let name = '';
-    ingredientsData.forEach(ingredient => {
-      if(ingredient.id === recipeIngredient.id) {
-        name = ingredient.name
-      }
-    })
-  masterGrocers += `• ${name}<br>`
-  return masterGrocers
-  }, '')
-  
-  return groceryList
-    }
-  // Taking in an array of objects that contains an id, and an object
-  // want to return a string that lists the needed ingredients
-  // // similar to getIngredients of Recipe.js
-  // Because you want it all as a collection of strings, should use reduce to loop through the recipes ingredients
-  // create an empty string variable of name 
-  // loop through the ingredientsData file using forEach
-  // // if the id in ingredientsData(probably named as ingredient.id) matches recipeIngredient, assign var name to ingredient.name
-  // GroceryList is your acc
-  // // have that += the interpolated information
-  // // // probably like, ` - ${name} - ${recipeIngredient.quantity.amount}`
+    const groceryList = neededGroceries.reduce((masterGrocers, recipeIngredient) => {
+      let name = '';
+      ingredientsData.forEach(ingredient => {
+        if(ingredient.id === recipeIngredient.id) {
+          name = ingredient.name;
+        }
+      });
+      masterGrocers += `• ${name} <br>`;
+      return masterGrocers;
+    }, '');
+    return groceryList;
+  }
 }
 
 
@@ -194,5 +181,5 @@ function loadRecipes(collection) {
       </div>
     `;
   });
-} // Semantically/best practices dictate that id's should only be used once. should we change how this works?
+} 
 
