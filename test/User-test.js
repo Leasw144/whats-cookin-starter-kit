@@ -7,7 +7,7 @@ const Menu = require('../src/Menu');
 const recipeData = require('../data/recipes');
 const userData = require('../data/users');
 
-describe('User', () => {
+describe.only('User', () => {
 
   it('should be a function', () => {
     expect(User).to.be.a('function');
@@ -53,7 +53,7 @@ describe('User', () => {
     const fakePantry = [{'ingredient': 1995, 'amount': 7}, {'ingredient': 19434, 'amount': 12}, {'ingredient': 1425, 'amount': 4}]
     const user = new User('Boris', 1, fakePantry);
 
-    expect(user.pantry).to.deep.equal([{ 'ingredient': 1995, 'amount': 7 }, { 'ingredient': 19434, 'amount': 12 }, { 'ingredient': 1425, 'amount': 4 }]);
+    expect(user.pantry.ingredients).to.deep.equal([{ 'ingredient': 1995, 'amount': 7 }, { 'ingredient': 19434, 'amount': 12 }, { 'ingredient': 1425, 'amount': 4 }]);
   });
 
   it('should have an empty array to store favorite recipes in by default', () => {
@@ -66,7 +66,7 @@ describe('User', () => {
     const recipe = new Recipe(recipeData[0].id, recipeData[0].image, recipeData[0].ingredients, recipeData[0].instructions, recipeData[0].name, recipeData[0].tags);
     const user = new User();
 
-    user.toggleFavorite(recipe);
+    user.addFavorite(recipe);
 
     expect(user.favoriteRecipes[0]).to.equal(recipe);
   });
@@ -76,21 +76,21 @@ describe('User', () => {
     const recipe2 = new Recipe(recipeData[1].id, recipeData[1].image, recipeData[1].ingredients, recipeData[1].instructions, recipeData[1].name, recipeData[1].tags);
     const user = new User();
     
-    user.toggleFavorite(recipe);
-    user.toggleFavorite(recipe2);
+    user.addFavorite(recipe);
+    user.addFavorite(recipe2);
 
     expect(user.favoriteRecipes.length).to.equal(2);
     
-    user.toggleFavorite(recipe);
+    user.removeFavorite(recipe);
     
     expect(user.favoriteRecipes.length).to.equal(1);
     expect(user.favoriteRecipes[0]).to.equal(recipe2);
     
-    user.toggleFavorite(recipe);
+    user.addFavorite(recipe);
     
     expect(user.favoriteRecipes[1]).to.equal(recipe);
     
-    user.toggleFavorite(recipe);
+    user.removeFavorite(recipe);
 
     expect(user.favoriteRecipes[1]).to.equal(undefined);
   });
