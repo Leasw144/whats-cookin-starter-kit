@@ -41,8 +41,8 @@ function clickWhat(event) {
 
 function searchRecipes() {
   let searchTerms = [];
-  const searchField = document.querySelector(".input").value;
-  searchTerms.push(...searchField.split(" "));
+  const searchField = document.querySelector('.input').value;
+  searchTerms.push(...searchField.split(' '));
   if (header.innerText.split(' ').includes('Favorites,')) {
     loadRecipes(currentUser.searchFor(currentUser.favoriteRecipes, searchTerms));
   } else {
