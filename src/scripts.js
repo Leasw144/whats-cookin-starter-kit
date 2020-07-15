@@ -1,6 +1,6 @@
 /*eslint-disable*/
 
-const header = document.querySelector("h1");
+const header = document.querySelector('h1');
 const detailsFavoriteButton = document.querySelector('.details-favorite-button');
 const randomIndex = Math.floor(Math.random() * usersData.length);
 const currentUser = new User(usersData[randomIndex].name, usersData[randomIndex].id, usersData[randomIndex].pantry);
@@ -33,6 +33,20 @@ function clickWhat(event) {
     loadFavoritesHeader();
   } else if (event.target.classList.contains('details-favorite-button')) {
     toggleDetailFavoriteIcon(event); // How to get header to update if last favorite is removed in detail view of the favorites view?
+  } else if (event.target.innerText === 'Search') {
+  event.preventDefault()
+  searchRecipes();
+  }
+}
+
+function searchRecipes() {
+  let searchTerms = [];
+  const searchField = document.querySelector(".input").value;
+  searchTerms.push(...searchField.split(" "));
+  if (header.innerText.split(' ').includes('Favorites,')) {
+    loadRecipes(currentUser.searchFor(currentUser.favoriteRecipes, searchTerms));
+  } else {
+    loadRecipes(currentUser.searchFor(allRecipes, searchTerms));
   }
 }
 
@@ -56,14 +70,14 @@ function favorite(event) {
   currentUser.addFavorite(makeNewRecipe(event.target.parentNode.id));  
   document
     .getElementById(event.target.parentNode.id) 
-    .querySelector(".favorite-button").innerText = "♥️";
+    .querySelector('.favorite-button').innerText = '♥️';
 }
 
 function unFavorite(event) {
   currentUser.removeFavorite(makeNewRecipe(event.target.parentNode.id));
   document
     .getElementById(event.target.parentNode.id) 
-    .querySelector(".favorite-button").innerText = "♡";
+    .querySelector('.favorite-button').innerText = '♡';
 }
 
 function toggleDetailFavoriteIcon(event) {
@@ -93,8 +107,8 @@ function findRecipe(id) {
 }
 
 function displayAllRecipes() {
-   hideElement("recipe-details-display");
-   displayElement("all-recipes-display");
+   hideElement('recipe-details-display');
+   displayElement('all-recipes-display');
 }
 
 function displayRecipeDetails(id) {
@@ -103,15 +117,15 @@ function displayRecipeDetails(id) {
   const recipe = makeNewRecipe(id);
   let isFavorite = currentUser.favoriteRecipes.some(fav => fav.id === recipe.id);
   let icon = isFavorite ? '♥️' : '♡';
-  document.querySelector(".recipe-img-full").src = recipe.image;
-  document.querySelector(".recipe-img-full").alt = `picture of ${recipe.name}`;
-  document.querySelector(".name").innerText = recipe.name;
+  document.querySelector('.recipe-img-full').src = recipe.image;
+  document.querySelector('.recipe-img-full').alt = `picture of ${recipe.name}`;
+  document.querySelector('.name').innerText = recipe.name;
   document.querySelector('.ingredients').innerHTML = recipe.getIngredients();
   document.querySelector('.cost').innerHTML = `<b> Total Cost of Ingredients: $${recipe.getCost(recipe.ingredients)}</b>`;
-  document.querySelector(".instructions").innerHTML = recipe.getDirections();
+  document.querySelector('.instructions').innerHTML = recipe.getDirections();
   document.querySelector('.details-favorite-button').innerText = `${icon} Favorite`;
   document.querySelector('.details-favorite-button').parentNode.id = recipe.id;
-  document.querySelector(".needed-groceries").innerHTML = getGroceryList(recipe);
+  document.querySelector('.needed-groceries').innerHTML = getGroceryList(recipe);
 }
 
 function getGroceryList(selectedRecipe) {
@@ -133,13 +147,12 @@ function getGroceryList(selectedRecipe) {
   }
 }
 
-
 function hideElement(className) {
-  document.querySelector(`.${className}`).classList.add("hidden");
+  document.querySelector(`.${className}`).classList.add('hidden');
 }
 
 function displayElement(className) {
-  document.querySelector(`.${className}`).classList.remove("hidden");
+  document.querySelector(`.${className}`).classList.remove('hidden');
 }
 
 function loadData() {
@@ -162,7 +175,7 @@ function loadFavoritesHeader() {
 }
 
 function loadRecipes(collection) {
-  const allRecipesDisplay = document.querySelector(".all-recipes-display");
+  const allRecipesDisplay = document.querySelector('.all-recipes-display');
   allRecipesDisplay.innerHTML = '';
   collection.forEach(recipe => {
     let isFavorite = currentUser.favoriteRecipes.some(fav => fav.id === recipe.id);
@@ -173,9 +186,9 @@ function loadRecipes(collection) {
         <footer class='card-footer'>
           <p>${recipe.name}</p>
           <div id='${recipe.id}' class='card-buttons'>
-            <button class='favorite-button'><img src="" alt="">${icon}</button>
-            <button class='details-button'><img src="" alt="">Details</button>
-            <button class='menu-button'><img src="" alt="">+Menu</button>
+            <button class='favorite-button'><img src='' alt=''>${icon}</button>
+            <button class='details-button'><img src='' alt=''>Details</button>
+            <button class='menu-button'><img src='' alt=''>+Menu</button>
           </div>
         </footer>
       </div>
