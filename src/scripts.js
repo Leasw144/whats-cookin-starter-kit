@@ -18,22 +18,15 @@ function clickWhat(event) {
     loadUserName();
     loadRecipes(allRecipes);
     displayAllRecipes();
-  } else if (event.target.innerText === 'Back to Recipes') { // need to invoke load recipes, but make it specific to what you're going back to (allrecipes vs favoriteRecipes)
-    displayAllRecipes()
-  } else if (event.target.innerText === '♡') {
-    currentUser.addFavorite(makeNewRecipe(event.target.parentNode.id));
-    document
-      .getElementById(event.target.parentNode.id) // does this need parentNode? Maybe this is its own function 'favorite()'
-      .querySelector('.favorite-button').innerText = "♥️";
+  } else if (event.target.innerText === 'Back to Recipes') { 
+    whatRecipes();
+    displayAllRecipes();
   } else if (event.target.innerText === '♥️' && header.innerText.split(' ').includes('Favorites,')) {
     currentUser.removeFavorite(makeNewRecipe(event.target.parentNode.id));
     loadRecipes(currentUser.favoriteRecipes);
     loadFavoritesHeader();
-  } else if (event.target.innerText === '♥️') {
-    currentUser.removeFavorite(makeNewRecipe(event.target.parentNode.id));
-    document
-      .getElementById(event.target.parentNode.id) // does this need parentNode? Maybe this is its own function 'unfavorite()'
-      .querySelector(".favorite-button").innerText = "♡";
+  } else if (event.target.classList.contains('favorite-button')) {
+    toggleFavorite(event);
   } else if (event.target.innerText === 'View Favorite Recipes') {
     loadRecipes(currentUser.favoriteRecipes);
     displayAllRecipes();
@@ -41,6 +34,36 @@ function clickWhat(event) {
   } else if (event.target.classList.contains('details-favorite-button')) {
     toggleDetailFavoriteIcon(event); // How to get header to update if last favorite is removed in detail view of the favorites view?
   }
+}
+
+function whatRecipes() {
+  if (header.innerText.split(' ').includes('Favorites,')) {
+    loadRecipes(currentUser.favoriteRecipes);
+  } else {
+    loadRecipes(allRecipes);
+  }
+}
+
+function toggleFavorite(event) {
+  if (event.target.innerText === '♡') {
+    favorite(event);  
+  } else if (event.target.innerText === '♥️') {
+    unFavorite(event);
+  }
+}
+
+function favorite(event) {
+  currentUser.addFavorite(makeNewRecipe(event.target.parentNode.id));  
+  document
+    .getElementById(event.target.parentNode.id) // does this need parentNode? 
+    .querySelector(".favorite-button").innerText = "♥️";
+}
+
+function unFavorite(event) {
+  currentUser.removeFavorite(makeNewRecipe(event.target.parentNode.id));
+  document
+    .getElementById(event.target.parentNode.id) // does this need parentNode? 
+    .querySelector(".favorite-button").innerText = "♡";
 }
 
 function toggleDetailFavoriteIcon(event) {
