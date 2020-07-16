@@ -1,5 +1,3 @@
-
-
 const header = document.querySelector('h1');
 const detailsFavoriteButton = document.querySelector('.details-favorite-button');
 const randomIndex = Math.floor(Math.random() * usersData.length);
@@ -39,15 +37,66 @@ function clickWhat(event) {
   }
 }
 
-function searchRecipes() {
-  let searchTerms = [];
-  const searchField = document.querySelector('.input').value;
-  searchTerms.push(...searchField.split(' '));
-  if (header.innerText.split(' ').includes('Favorites,')) {
-    loadRecipes(currentUser.searchFor(currentUser.favoriteRecipes, searchTerms));
-  } else {
-    loadRecipes(currentUser.searchFor(allRecipes, searchTerms));
-  }
+function loadData() {
+  loadUserName();
+  loadRecipes(allRecipes);
+}
+
+function displayRecipeDetails(id) {
+  hideElement('all-recipes-display');
+  displayElement('recipe-details-display');
+  const recipe = makeNewRecipe(id);
+  let isFavorite = currentUser.favoriteRecipes.some(fav => fav.id === recipe.id);
+  let icon = isFavorite ? '♥️' : '♡';
+  document.querySelector('.recipe-img-full').src = recipe.image;
+  document.querySelector('.recipe-img-full').alt = `picture of ${recipe.name}`;
+  document.querySelector('.name').innerText = recipe.name;
+  document.querySelector('.ingredients').innerHTML = recipe.getIngredients();
+  document.querySelector('.cost').innerHTML = `<b> Total Cost of Ingredients: $${recipe.getCost(recipe.ingredients)}</b>`;
+  document.querySelector('.instructions').innerHTML = recipe.getDirections();
+  document.querySelector('.details-favorite-button').innerText = `${icon} Favorite`;
+  document.querySelector('.details-favorite-button').parentNode.id = recipe.id;
+  document.querySelector('.needed-groceries').innerHTML = getGroceryList(recipe);
+}
+
+function hideElement(className) {
+  document.querySelector(`.${className}`).classList.add("hidden");
+}
+
+function displayElement(className) {
+  document.querySelector(`.${className}`).classList.remove("hidden");
+}
+
+function loadUserName() {
+  const name = currentUser.name.split(' ');
+  header.innerText = `What's Cookin, ${name[0]}?`;
+}
+
+function loadRecipes(collection) {
+  const allRecipesDisplay = document.querySelector('.all-recipes-display');
+  allRecipesDisplay.innerHTML = '';
+  collection.forEach(recipe => {
+    let isFavorite = currentUser.favoriteRecipes.some(fav => fav.id === recipe.id);
+    let icon = isFavorite ? '♥️' : '♡';
+    allRecipesDisplay.innerHTML += `
+      <div id='${recipe.id}' class='recipe-card'>
+        <img class='recipe-img' src=${recipe.image} alt='picture of ${recipe.name}'/>
+        <footer class='card-footer'>
+          <p>${recipe.name}</p>
+          <div id='${recipe.id}' class='card-buttons'>
+            <button class='favorite-button'><img src='' alt=''>${icon}</button>
+            <button class='details-button'><img src='' alt=''>Details</button>
+            <button class='menu-button'><img src='' alt=''>+Menu</button>
+          </div>
+        </footer>
+      </div>
+    `;
+  });
+} 
+
+function displayAllRecipes() {
+  hideElement('recipe-details-display');
+  displayElement('all-recipes-display');
 }
 
 function whatRecipes() {
@@ -55,6 +104,30 @@ function whatRecipes() {
     loadRecipes(currentUser.favoriteRecipes);
   } else {
     loadRecipes(allRecipes);
+  }
+}
+
+function makeNewRecipe(id) {
+  const recipe = recipeData[findRecipe(id)];
+  return new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
+}
+
+function findRecipe(id) {
+  let index;
+  recipeData.forEach(recipe => {
+    if (recipe.id === parseInt(id)) {
+      index = recipeData.indexOf(recipe);
+    }
+  });
+  return index;
+}
+
+function loadFavoritesHeader() {
+  const name = currentUser.name.split(" ");
+  if (currentUser.favoriteRecipes.length === 0) {
+    header.innerText = `You Have No Favorites, ${name[0]}`;
+  } else {
+    header.innerText = `Here Are Your Favorites, ${name[0]}`;
   }
 }
 
@@ -91,41 +164,15 @@ function toggleDetailFavoriteIcon(event) {
   }
 }
 
-function makeNewRecipe(id) {
-  const recipe = recipeData[findRecipe(id)];
-  return new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
-}
-
-function findRecipe(id) {
-  let index;
-  recipeData.forEach(recipe => {
-    if (recipe.id === parseInt(id)) {
-      index = recipeData.indexOf(recipe);
-    }
-  });
-  return index;
-}
-
-function displayAllRecipes() {
-  hideElement('recipe-details-display');
-  displayElement('all-recipes-display');
-}
-
-function displayRecipeDetails(id) {
-  hideElement('all-recipes-display');
-  displayElement('recipe-details-display');
-  const recipe = makeNewRecipe(id);
-  let isFavorite = currentUser.favoriteRecipes.some(fav => fav.id === recipe.id);
-  let icon = isFavorite ? '♥️' : '♡';
-  document.querySelector('.recipe-img-full').src = recipe.image;
-  document.querySelector('.recipe-img-full').alt = `picture of ${recipe.name}`;
-  document.querySelector('.name').innerText = recipe.name;
-  document.querySelector('.ingredients').innerHTML = recipe.getIngredients();
-  document.querySelector('.cost').innerHTML = `<b> Total Cost of Ingredients: $${recipe.getCost(recipe.ingredients)}</b>`;
-  document.querySelector('.instructions').innerHTML = recipe.getDirections();
-  document.querySelector('.details-favorite-button').innerText = `${icon} Favorite`;
-  document.querySelector('.details-favorite-button').parentNode.id = recipe.id;
-  document.querySelector('.needed-groceries').innerHTML = getGroceryList(recipe);
+function searchRecipes() {
+  let searchTerms = [];
+  const searchField = document.querySelector('.input').value;
+  searchTerms.push(...searchField.split(' '));
+  if (header.innerText.split(' ').includes('Favorites,')) {
+    loadRecipes(currentUser.searchFor(currentUser.favoriteRecipes, searchTerms));
+  } else {
+    loadRecipes(currentUser.searchFor(allRecipes, searchTerms));
+  }
 }
 
 function getGroceryList(selectedRecipe) {
@@ -146,53 +193,3 @@ function getGroceryList(selectedRecipe) {
     return groceryList;
   }
 }
-
-function hideElement(className) {
-  document.querySelector(`.${className}`).classList.add('hidden');
-}
-
-function displayElement(className) {
-  document.querySelector(`.${className}`).classList.remove('hidden');
-}
-
-function loadData() {
-  loadUserName();
-  loadRecipes(allRecipes);
-}
-
-function loadUserName() {
-  const name = currentUser.name.split(' ');
-  header.innerText = `What's Cookin, ${name[0]}?`;
-}
-
-function loadFavoritesHeader() {
-  const name = currentUser.name.split(' ');
-  if (currentUser.favoriteRecipes.length === 0) {
-    header.innerText = `You Have No Favorites, ${name[0]}`;
-  } else {
-    header.innerText = `Here Are Your Favorites, ${name[0]}`;
-  }
-}
-
-function loadRecipes(collection) {
-  const allRecipesDisplay = document.querySelector('.all-recipes-display');
-  allRecipesDisplay.innerHTML = '';
-  collection.forEach(recipe => {
-    let isFavorite = currentUser.favoriteRecipes.some(fav => fav.id === recipe.id);
-    let icon = isFavorite ? '♥️' : '♡';
-    allRecipesDisplay.innerHTML += `
-      <div id='${recipe.id}' class='recipe-card'>
-        <img class='recipe-img' src=${recipe.image} alt='picture of ${recipe.name}'/>
-        <footer class='card-footer'>
-          <p>${recipe.name}</p>
-          <div id='${recipe.id}' class='card-buttons'>
-            <button class='favorite-button'><img src='' alt=''>${icon}</button>
-            <button class='details-button'><img src='' alt=''>Details</button>
-            <button class='menu-button'><img src='' alt=''>+Menu</button>
-          </div>
-        </footer>
-      </div>
-    `;
-  });
-} 
-
