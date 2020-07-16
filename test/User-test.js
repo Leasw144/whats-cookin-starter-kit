@@ -7,7 +7,7 @@ const Menu = require('../src/Menu');
 const recipeData = require('../data/recipes');
 const userData = require('../data/users');
 
-describe.only('User', () => {
+describe('User', () => {
 
   it('should be a function', () => {
     expect(User).to.be.a('function');

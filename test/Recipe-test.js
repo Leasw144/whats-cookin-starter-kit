@@ -116,7 +116,7 @@ describe('Recipe', () => {
     const img = 'https://spoonacular.com/recipeImages/678353-556x370.jpg';
     const recipe = new Recipe(24, img, ingredients, instructions, name, tags);
 
-    const totalCost = recipe.getCost();
+    const totalCost = recipe.getCost(recipe.ingredients);
 
     expect(totalCost).to.equal('7.24');
   });
