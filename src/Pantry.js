@@ -1,9 +1,10 @@
+
 class Pantry {
   constructor(pantry) {
     this.ingredients = pantry
   }
 
-  checkPantry(menu) {
+  checkPantry = (menu) => {
     const fullRecipe = [menu]
     return fullRecipe.reduce((groceryList, recipe) => {
       recipe.ingredients.forEach(ingredient => {
