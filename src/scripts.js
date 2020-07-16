@@ -1,4 +1,4 @@
-/*eslint-disable*/
+
 
 const header = document.querySelector('h1');
 const detailsFavoriteButton = document.querySelector('.details-favorite-button');
@@ -32,10 +32,10 @@ function clickWhat(event) {
     displayAllRecipes();
     loadFavoritesHeader();
   } else if (event.target.classList.contains('details-favorite-button')) {
-    toggleDetailFavoriteIcon(event); // How to get header to update if last favorite is removed in detail view of the favorites view?
+    toggleDetailFavoriteIcon(event);
   } else if (event.target.innerText === 'Search') {
-  event.preventDefault()
-  searchRecipes();
+    event.preventDefault()
+    searchRecipes();
   }
 }
 
@@ -107,8 +107,8 @@ function findRecipe(id) {
 }
 
 function displayAllRecipes() {
-   hideElement('recipe-details-display');
-   displayElement('all-recipes-display');
+  hideElement('recipe-details-display');
+  displayElement('all-recipes-display');
 }
 
 function displayRecipeDetails(id) {
