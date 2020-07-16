@@ -1,5 +1,4 @@
 const header = document.querySelector('h1');
-const detailsFavoriteButton = document.querySelector('.details-favorite-button');
 const randomIndex = Math.floor(Math.random() * usersData.length);
 const currentUser = new User(usersData[randomIndex].name, usersData[randomIndex].id, usersData[randomIndex].pantry);
 const allRecipes = recipeData.map(recipe => {
@@ -154,6 +153,7 @@ function unFavorite(event) {
 }
 
 function toggleDetailFavoriteIcon(event) {
+  const detailsFavoriteButton = document.querySelector('.details-favorite-button');
   if (detailsFavoriteButton.innerText.split(' ').includes('♡')) {
     detailsFavoriteButton.innerText = '♥️ Favorite';
     currentUser.addFavorite(makeNewRecipe(event.target.parentNode.id));
