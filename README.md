@@ -37,12 +37,18 @@
 ## Application in Action
 
 * When a user clicks the details button on a recipe card, a detailed view of the recipe is displayed including an enlarged image, ingredients, instructions to cook and a list of still needed ingredients.
+
+
 ![gif of recipe details card](assets/details.gif)
 
 * When a user clicks on the heart icon on a card, the recipe is added to their favorites and can be viewd by clicking on the view favorite recipes button.
+
+
 ![gif of favoriting and unfavoriting recipes](assets/realFavorites.gif)
 
 * When a user types an input into the search bar, page will return a list of recipes that match it by description and/or tag.
+
+
 ![gif of the search bar in use](assets/search.gif)
 
 
