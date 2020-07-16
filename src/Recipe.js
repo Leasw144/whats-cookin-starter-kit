@@ -14,7 +14,6 @@ class Recipe {
     const total = ingredientsNeeded.reduce((totalCost, recipeIngredient) => {
       ingredientsData.forEach(ingredient => {
         if (ingredient.id === recipeIngredient.id) {
-          // totalCost += recipeIngredient.quantity.amount * ingredient.estimatedCostInCents;
           totalCost += ingredient.estimatedCostInCents;
         }
       });
