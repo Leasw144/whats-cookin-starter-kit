@@ -34,6 +34,18 @@
 
 * Run `open index.html` in your terminal to open the application in your browser. 
 
+## Application in Action
+
+* When a user clicks the details button on a recipe card, a detailed view of the recipe is displayed including an enlarged image, ingredients, instructions to cook and a list of still needed ingredients.
+![gif of recipe details card](assets/details.gif)
+
+* When a user clicks on the heart icon on a card, the recipe is added to their favorites and can be viewd by clicking on the view favorite recipes button.
+![gif of favoriting and unfavoriting recipes](assets/realFavorites.gif)
+
+* When a user types an input into the search bar, page will return a list of recipes that match it by description and/or tag.
+![gif of the search bar in use](assets/search.gif)
+
+
 ## Challenges/Wins
 
 This project was certainly the most open to interpretation of any project to date in our experience at Turing, and at first it make approaching it very intimidating and overwhelming. It really pushed us to take advantage of our organizational tools, and use things like Github Projects to break down the larger task at hand into bite-sized, do-able chunks. Learning how to work together to decide what kind of MVP we wanted to produce was challenging for the same reasons: the spec for this project was very intentionally vague, especially when compared to what we have worked on leading up to this point in the program. By using the project board to outline each next step, we were also able to get a much clearer picture of what this application actually needed to look like. 
